@@ -1,0 +1,15 @@
+---
+- name: Update Apt
+  apt: update_cache=yes
+
+- name: Checking essentials
+  apt: name="{{ item }}" state=present
+  with_items:
+  - build-essential
+  - curl
+  - htop
+  - wget
+  - vim
+
+- name: Copy vimrc
+  copy: src=.vimrc dest=/home/vagrant/.vimrc

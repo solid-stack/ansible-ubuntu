@@ -1,0 +1,16 @@
+---
+
+- name: Install zsh
+  apt: name="zsh"
+
+- name: Clone oh-my-zsh repo
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/vagrant/.oh-my-zsh
+
+- name: Set zsh as default shell
+  user: name=vagrant shell=/bin/zsh
+
+- name: Use default .zshrc
+  command: cp /home/vagrant/.oh-my-zsh/templates/zshrc.zsh-template /home/vagrant/.zshrc
+
+- name: Switch to avit theme
+  lineinfile: dest=/home/vagrant/.zshrc regexp=^ZSH_THEME line=ZSH_THEME="avit"

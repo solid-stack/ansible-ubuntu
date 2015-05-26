@@ -1,0 +1,15 @@
+{
+  "name": "pga",
+  "version": "1.0.0",
+  "description": "Playbook generator for Ansible with Ubuntu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peter Ajtai <peter.ajtai@thinksolid.com>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.8.1",
+    "inquirer": "^0.8.5"
+  }
+}

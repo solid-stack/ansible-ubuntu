@@ -1,0 +1,10 @@
+" minimal vimrc
+colorscheme elflord
+
+syntax on
+
+set number
+
+set expandtab
+set tabstop=4
+set shiftwidth=4

@@ -1,0 +1,5 @@
+---
+- name: Setup
+  hosts: vagrant
+  sudo: yes
+  roles:

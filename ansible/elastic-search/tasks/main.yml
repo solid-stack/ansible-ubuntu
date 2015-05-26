@@ -1,0 +1,7 @@
+---
+- apt_repository: repo="ppa:webupd8team/java"
+
+- apt: name='{{ item }}' update_cache=yes
+  with_items:
+    - oracle-java8-installer
+    - oracle-java8-set-default
