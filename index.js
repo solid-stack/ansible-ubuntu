@@ -83,6 +83,11 @@ inquirer
             .then(function(siteFile) {
                 return fs.writeFileAsync(path.join(cwd, 'ansible', 'site.yml'), siteFile);
             })
+            .then(function() {
+                console.log('\n\n Roles are ready to use.\n' +
+                    'You may test them out with:\n\n' +
+                    '    vagrant up\n');
+            })
             .catch(function(error) {
                 console.log('WHOOPS:', error);
             });
