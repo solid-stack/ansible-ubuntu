@@ -43,6 +43,7 @@ inquirer
             type : 'checkbox',
             message : 'Which roles do you need?',
             choices : [
+                'elasticsearch',
                 'mongo',
                 'mysql',
                 'nginx',

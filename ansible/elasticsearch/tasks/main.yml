@@ -1,0 +1,18 @@
+---
+- apt_repository: repo="ppa:webupd8team/java"
+
+- name: Add Elasticsearch key
+  apt_key: url=http://packages.elasticsearch.org/GPG-KEY-elasticsearch state=present
+
+- name: Add Elasticseach source list file
+  copy: src=elasticsearch.list dest=/etc/apt/sources.list.d/elasticsearch.list
+
+- name: Accept oracle license
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
+- name: Install Java & Elasticsearch
+  apt: name='{{ item }}' update_cache=yes
+  with_items:
+    - oracle-java8-installer
+    - oracle-java8-set-default
+    - elasticsearch=1.4.4

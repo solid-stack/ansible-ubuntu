@@ -38,3 +38,26 @@ suggest create a separate role that depends on of the main roles (e.g. `nginx-pr
 Make things more configurable.
 
 For example allow setting of local Vagrant ip, add more hosts, add some templating options...
+
+## List of roles
+
+### Defaults (always included)
+
+* apts:
+    * build-essential
+    * curl
+    * htop
+    * wget
+    * vim
+    * git (2.3+)
+* pip for python
+
+### Optional
+
+* Elasticsearch
+* Mongo
+* MySQL
+* Nginx
+* Node
+* Oh My ZSH
+* PHP5-Fpm
