@@ -51,7 +51,8 @@ inquirer
                 'nginx',
                 'node',
                 'oh-my-zsh',
-                'php-fpm'
+                'php-fpm',
+                'ruby'
             ]
         }
     ], function( answers ) {

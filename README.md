@@ -61,3 +61,4 @@ For example allow setting of local Vagrant ip, add more hosts, add some templati
 * Node
 * Oh My ZSH
 * PHP5-Fpm
+* ruby (2.2)
