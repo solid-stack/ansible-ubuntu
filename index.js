@@ -11,7 +11,8 @@ var inquirer = require('inquirer'),
         'essentials',
         'git',
         'info',
-        'pip'
+        'pip',
+        'oh-my-zsh'
     ],
     vars = [
         'group_vars'
@@ -46,6 +47,8 @@ inquirer
             message : 'Which roles do you need?',
             choices : [
                 'elasticsearch',
+                'essentials',
+                'git',
                 'mongo',
                 'mysql',
                 'nginx',
@@ -74,7 +77,7 @@ inquirer
             .then(function(siteFile) {
                 siteFile +=
                     '\n' +
-                    defaults.concat(answers.roles)
+                    answers.roles
                         .map(function(role) {
                             return '    - ' + role;
                         })

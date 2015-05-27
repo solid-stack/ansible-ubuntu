@@ -1,2 +1,4 @@
 ---
-node_user: api
+node_user: vagrant
+shell: zsh
+nodejs_nodesource_pin_priority: 500

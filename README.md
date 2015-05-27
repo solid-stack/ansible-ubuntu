@@ -41,19 +41,9 @@ For example allow setting of local Vagrant ip, add more hosts, add some templati
 
 ## List of roles
 
-### Defaults (always included)
+Some of these depend on each other - you do not have to pick the dependencies. They are automatically included
 
-* apts:
-    * build-essential
-    * curl
-    * htop
-    * wget
-    * vim
-    * git (2.3+)
-* pip for python
-
-### Optional
-
+* Git (2.3+)
 * Elasticsearch
 * Mongo
 * MySQL
