@@ -9,10 +9,12 @@ var inquirer = require('inquirer'),
     defaults = [
         'apt',
         'essentials',
-        'group_vars',
         'git',
         'info',
         'pip'
+    ],
+    vars = [
+        'group_vars'
     ],
     pga = require('commander'),
     verbose = false;
@@ -95,7 +97,7 @@ inquirer
     });
 
 function createDirectories(answers) {
-    var copyDirs = defaults.concat(answers.roles).map(copyDir),
+    var copyDirs = vars.concat(defaults).concat(answers.roles).map(copyDir),
         copyFiles = ['hosts', 'site.yml']
             .map(copyFile)
             .concat([
