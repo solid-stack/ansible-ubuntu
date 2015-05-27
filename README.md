@@ -8,6 +8,19 @@ get a Vagrantfile.
 After running this you can just `vagrant up` to take a look at things. You'll have to customize as you see fit. Change ips,
 add roles, variables, hosts, etc. This is a jumping off point that you customize.
 
+## Dependencies
+
+You need vagrant and ansible installed:
+
+http://vagrantup.com
+
+Ansible:
+
+```
+sudo easy_install pip
+sudo pip install ansible
+```
+
 ## Example:
 
 ```shell
