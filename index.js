@@ -71,7 +71,7 @@ inquirer
             .then(function(siteFile) {
                 siteFile +=
                     '\n' +
-                    answers.roles
+                    defaults.concat(answers.roles)
                         .map(function(role) {
                             return '    - ' + role;
                         })
