@@ -1,6 +1,6 @@
 {
   "name": "ansible-ubuntu",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Playbook generator for Ansible with Ubuntu",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,9 @@
   },
   "bugs": {
     "url": "https://github.com/pajtai/ansible-ubuntu/issues"
+  },
+  "bin" : {
+    "ansible-ubuntu" : "./index.js"
   },
   "author": "Peter Ajtai <peter.ajtai@thinksolid.com>",
   "license": "MIT",
