@@ -11,6 +11,7 @@ add roles, variables, hosts, etc. This is a jumping off point that you customize
 ## Example:
 
 ```shell
+npm install -g ansible-ubuntu
 ansible-ubuntu -v
 vagrant up
 vagrant ssh
