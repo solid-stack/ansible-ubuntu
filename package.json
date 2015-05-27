@@ -6,10 +6,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pajtai/ansible-ubuntu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pajtai/ansible-ubuntu/issues"
+  },
   "author": "Peter Ajtai <peter.ajtai@thinksolid.com>",
   "license": "MIT",
   "dependencies": {
     "bluebird": "^2.9.13",
+    "commander": "^2.8.1",
     "inquirer": "^0.8.5"
   }
 }
