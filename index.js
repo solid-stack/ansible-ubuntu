@@ -42,7 +42,6 @@ inquirer
             type : 'checkbox',
             message : 'Which roles do you need?',
             choices : [
-                'elastic-search',
                 'mongo',
                 'mysql',
                 'nginx',
@@ -84,7 +83,7 @@ inquirer
                 return fs.writeFileAsync(path.join(cwd, 'ansible', 'site.yml'), siteFile);
             })
             .then(function() {
-                console.log('\n\n Roles are ready to use.\n' +
+                console.log('\n\nRoles are ready to use.\n' +
                     'You may test them out with:\n\n' +
                     '    vagrant up\n');
             })
