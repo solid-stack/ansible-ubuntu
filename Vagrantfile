@@ -39,7 +39,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :forwarded_port, guest: 3306, host: 8306, auto_correct: true
 
   config.vm.network "private_network", ip: "192.168.99.99"
-  config.vm.synced_folder "./", "/var/www/inlineplastics.com/source", nfs: true
+  config.vm.synced_folder "./", "/var/www/vhosts/example/source", nfs: true
 
   config.vm.provision :ansible do |ansible|
      ansible.playbook = "ansible/site.yml"
