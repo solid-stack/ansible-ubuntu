@@ -9,7 +9,7 @@
   "author": "Peter Ajtai <peter.ajtai@thinksolid.com>",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.8.1",
+    "bluebird": "^2.9.13",
     "inquirer": "^0.8.5"
   }
 }
