@@ -9,6 +9,7 @@ var inquirer = require('inquirer'),
     defaults = [
         'apt',
         'essentials',
+        'group_vars',
         'git',
         'info',
         'pip'

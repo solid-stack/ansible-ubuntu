@@ -8,14 +8,12 @@
 - name: Add NodeSource deb-src repository
   apt_repository: repo='deb-src https://deb.nodesource.com/node {{ ansible_distribution_release }} main' state=present
 
-- name: Create User for Node
-  user: name='{{ node_user }}'
+#- name: Create User for Node
+#  user: name='{{ node_user }}'
 
 - name: Install Node.js
   apt: pkg=nodejs state=installed update_cache=yes
-  remote_user: '{{ node_user }}'
 
 - name: Install PM2
   npm: global=yes name=pm2 version=0.12.2
-  remote_user: '{{ node_user }}'
 
