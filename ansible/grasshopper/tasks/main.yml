@@ -1,0 +1,18 @@
+---
+- name: Install global npms for grasshopper
+  sudo: no
+  npm: name={{ item }} global=yes
+  with_items:
+    - bower
+    - grunt-cli
+    - grasshopper-cli
+
+- name: Install gems for grasshopper
+  gem: name={{ item.name }} pre_release={{ item.pre }}
+  with_items:
+    - name: sass-globbing
+      pre: no
+    - name: sass-css-importer
+      pre: yes
+    - name: bundler
+      pre: no

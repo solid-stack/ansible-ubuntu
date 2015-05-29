@@ -34,7 +34,7 @@ vagrant ssh
 
 1. `npm install -g ansible-ubuntu`
 1. `cd` into the directory you want to use. The directory will get an `ansible` directory filled with roles and a `Vagrantfile`.
-1. `ansible-ubuntu` will let you pick the roles you want included. There a suite of default roles always included.
+1. `ansible-ubuntu` will let you pick the roles you want included. There a suite of default roles always included. Look at the meta dir and for now you have to manually include some dependencies.
     
 All the roles are generally setting up the environment. For project specific stuff (e.g. sites-available / enable), I'd
 suggest create a separate role that depends on of the main roles (e.g. `nginx-project` where meta has an `nginx` dependency).
@@ -58,6 +58,7 @@ Some of these depend on each other - you do not have to pick the dependencies. T
 
 * Git (2.3+)
 * Elasticsearch
+* Grasshopper - sets up [grasshopper-cli](https://github.com/Solid-Interactive/grasshopper-cli)
 * Mongo
 * MySQL
 * Nginx
