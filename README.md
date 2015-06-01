@@ -2,11 +2,13 @@
 
 ## What is this?
 
-A simple minded playbook generator for Ansible. The output assume use of Ubuntu or another `apt-get` based os. You also
+A simple minded playbook generator for Ansible. The output assumes use of Ubuntu or another `apt-get` based os. You also
 get a Vagrantfile.
 
 After running this you can just `vagrant up` to take a look at things. You'll have to customize as you see fit. Change ips,
 add roles, variables, hosts, etc. This is a jumping off point that you customize.
+
+This is not a replacement for [Ansible Galaxy](https://galaxy.ansible.com/). This is just a suite of Ansible roles I find useful for working with Ubuntu.
 
 ## Dependencies
 
