@@ -2,11 +2,26 @@
 
 ## What is this?
 
-A simple minded playbook generator for Ansible. The output assume use of Ubuntu or another `apt-get` based os. You also
+A simple minded playbook generator for Ansible. The output assumes use of Ubuntu or another `apt-get` based os. You also
 get a Vagrantfile.
 
 After running this you can just `vagrant up` to take a look at things. You'll have to customize as you see fit. Change ips,
 add roles, variables, hosts, etc. This is a jumping off point that you customize.
+
+This is not a replacement for [Ansible Galaxy](https://galaxy.ansible.com/). This is just a suite of Ansible roles I find useful for working with Ubuntu.
+
+## Dependencies
+
+You need vagrant and ansible installed:
+
+http://vagrantup.com
+
+Ansible:
+
+```
+sudo easy_install pip
+sudo pip install ansible
+```
 
 ## Example:
 
@@ -21,7 +36,7 @@ vagrant ssh
 
 1. `npm install -g ansible-ubuntu`
 1. `cd` into the directory you want to use. The directory will get an `ansible` directory filled with roles and a `Vagrantfile`.
-1. `ansible-ubuntu` will let you pick the roles you want included. There a suite of default roles always included.
+1. `ansible-ubuntu` will let you pick the roles you want included. There a suite of default roles always included. Look at the meta dir and for now you have to manually include some dependencies.
     
 All the roles are generally setting up the environment. For project specific stuff (e.g. sites-available / enable), I'd
 suggest create a separate role that depends on of the main roles (e.g. `nginx-project` where meta has an `nginx` dependency).
@@ -45,6 +60,7 @@ Some of these depend on each other - you do not have to pick the dependencies. T
 
 * Git (2.3+)
 * Elasticsearch
+* Grasshopper - sets up [grasshopper-cli](https://github.com/Solid-Interactive/grasshopper-cli)
 * Mongo
 * MySQL
 * Nginx

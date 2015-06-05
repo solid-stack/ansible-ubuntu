@@ -12,4 +12,4 @@
   - vim
 
 - name: Copy vimrc
-  copy: src=.vimrc dest=/home/vagrant/.vimrc
+  copy: src=.vimrc dest=/home/{{ ansible_ssh_user }}/.vimrc
