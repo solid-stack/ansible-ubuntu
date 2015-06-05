@@ -3,6 +3,12 @@
 # once that is fixed 1.6 can be installed
 # currently 1.6 could be installed by compiling from source (it'd be eaiser to run apt-get then do that init.d etc would be available)
 
+- name: Ensure APT official nginx key
+  apt_key: url=http://nginx.org/keys/nginx_signing.key
+
+- name: Ensure APT official nginx repository
+  apt_repository: repo="deb http://nginx.org/packages/{{ ansible_distribution|lower }}/ {{ ansible_distribution_release }} nginx"
+
 - name: Install Nginx
   apt: pkg=nginx update_cache=yes
   notify:

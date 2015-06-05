@@ -4,6 +4,21 @@
 # vagrant-exec
 # vagrant-vbguest
 
+unless Vagrant.has_plugin?("vagrant-exec")
+  raise '
+
+  ERROR:::::::::::::::::::
+      vagrant-exec not installed, please do so using "vagrant plugin install vagrant-exec"!
+          '
+end
+unless Vagrant.has_plugin?("vagrant-vbguest")
+  raise '
+
+  ERROR:::::::::::::::::::
+      vagrant-vbguest not installed, please do so using "vagrant plugin install vagrant-vbguest"!
+          '
+end
+
 Vagrant.configure("2") do |config|
   config.vbguest.auto_update = true
 

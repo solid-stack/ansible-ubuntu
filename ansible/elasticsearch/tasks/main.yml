@@ -10,9 +10,12 @@
 - name: Accept oracle license
   debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
 
-- name: Install Java & Elasticsearch
-  apt: name='{{ item }}' update_cache=yes
-  with_items:
-    - oracle-java8-installer
-    - oracle-java8-set-default
-    - elasticsearch=1.4.4
+# These are separated out, since they each take a long time:
+- name: Java8 Installer
+  apt: name=oracle-java8-installer update_cache=yes
+
+- name: Java8 Set Default
+  apt: name=oracle-java8-set-default
+
+- name: Elasticsearch
+  apt: name=elasticsearch=1.4.4
