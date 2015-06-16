@@ -32,6 +32,12 @@ vagrant up
 vagrant ssh
 ```
 
+To run the playbook against a group:
+
+```
+ansible-playbook ansible/site.yml -l staging -i ansible/hosts
+```
+
 ## How do I run it?
 
 1. `npm install -g ansible-ubuntu`
