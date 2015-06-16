@@ -68,3 +68,13 @@ Some of these depend on each other - you do not have to pick the dependencies. T
 * Oh My ZSH
 * PHP5-Fpm
 * ruby (2.2)
+
+## Trouble shooting
+
+If tasks are timing out due to a slow connection, add:
+
+```
+  async: 1800
+```
+
+You will have to break apart tasks `with_items` to indvidual ones.

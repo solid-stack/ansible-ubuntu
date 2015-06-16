@@ -7,4 +7,11 @@
   apt: name=mongodb-org update_cache=yes
   async: 1800
 
+- name: Bind mongo to localhost
+  lineinfile: dest=/etc/mongod.conf regexp='^bind_ip\s*=\s*127\.0\.0\.1\s*' line='bind_ip = 127.0.0.1'
+
 - service: name=mongod state=started
+
+- name: Install pymongo for any project related mongo
+  pip: name=pymongo
+  async: 1800

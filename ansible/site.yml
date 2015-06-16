@@ -1,5 +1,6 @@
 ---
-- name: Setup
-  hosts: vagrant
+- name: Environment Setup
+  hosts: all
   sudo: yes
   roles:
+    - essentials

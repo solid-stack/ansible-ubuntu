@@ -1,2 +1,5 @@
 [vagrant]
 192.168.99.99
+
+[staging]
+staging.example.com
