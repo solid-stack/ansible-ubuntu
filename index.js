@@ -49,11 +49,13 @@ inquirer
                 'elasticsearch',
                 'essentials',
                 'git',
+                'grasshopper',
                 'mongo',
                 'mysql',
                 'nginx',
                 'node',
                 'oh-my-zsh',
+                'pip',
                 'php-fpm',
                 'ruby'
             ]
