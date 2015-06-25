@@ -10,6 +10,7 @@ var inquirer = require('inquirer'),
         'apt',
         'essentials',
         'git',
+        'hostname',
         'info',
         'pip',
         'oh-my-zsh'
@@ -47,15 +48,11 @@ inquirer
             message : 'Which roles do you need?',
             choices : [
                 'elasticsearch',
-                'essentials',
-                'git',
                 'grasshopper',
                 'mongo',
                 'mysql',
                 'nginx',
                 'node',
-                'oh-my-zsh',
-                'pip',
                 'php-fpm',
                 'ruby'
             ]

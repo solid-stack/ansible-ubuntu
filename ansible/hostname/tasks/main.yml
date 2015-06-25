@@ -1,0 +1,6 @@
+---
+- name: ensure /etc/hostname has only name of machine
+  template: src=hostname dest=/etc/hostname
+
+- name: localhost in /etc/hosts
+  lineinfile: dest=/etc/hosts line="127.0.1.1 {{ ansible_hostname }}"
