@@ -1,0 +1,6 @@
+---
+ansible_ssh_user: vagrant
+nginx:
+  host_to_listen_on: dev.sample.com
+node:
+  nodesource_pin_priority: 500

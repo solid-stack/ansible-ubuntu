@@ -1,3 +1,7 @@
 ---
-# example staging config
 ansible_ssh_user: ubuntu
+nginx:
+  host_to_listen_on: staging.sample.com
+node:
+  nodesource_pin_priority: 500
+  env: staging

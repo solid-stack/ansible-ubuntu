@@ -1,11 +1,18 @@
 ---
 - name: Install global npms for grasshopper
   sudo: no
-  npm: name={{ item }} global=yes
-  with_items:
-    - bower
-    - grunt-cli
-    - grasshopper-cli
+  npm: name=bower global=yes
+  async: 1800
+
+- name: Install global npms for grasshopper
+  sudo: no
+  npm: name=grunt-cli global=yes
+  async: 1800
+
+- name: Install global npms for grasshopper
+  sudo: no
+  npm: name=grasshopper-cli global=yes
+  async: 1800
 
 - name: Install gems for grasshopper
   gem: name={{ item.name }} pre_release={{ item.pre }}
