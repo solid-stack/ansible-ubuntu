@@ -1,0 +1,6 @@
+---
+- name: Start Kibana
+  service: name=kibana4 state=started
+
+- name: Restart Kibana
+  service: name=kibana4 state=restarted

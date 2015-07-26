@@ -4,3 +4,9 @@ nginx:
   host_to_listen_on: dev.sample.com
 node:
   nodesource_pin_priority: 500
+  env: vagrant
+kibana:
+  host_to_listen_on: staging.sample.com
+  auth_user: someone
+  auth_password: some_hard_to_break_password
+  proxy_port: 411

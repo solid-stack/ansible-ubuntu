@@ -48,6 +48,7 @@ inquirer
             message : 'Which roles do you need?',
             choices : [
                 'elasticsearch',
+                'kibana',
                 'grasshopper',
                 'mongo',
                 'mysql',

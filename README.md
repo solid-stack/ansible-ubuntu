@@ -67,6 +67,7 @@ Some of these depend on each other - you do not have to pick the dependencies. T
 * Git (2.3+)
 * Elasticsearch
 * Grasshopper - sets up [grasshopper-cli](https://github.com/Solid-Interactive/grasshopper-cli)
+* Kibana4
 * Mongo
 * MySQL
 * Nginx
