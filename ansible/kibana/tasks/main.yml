@@ -32,7 +32,7 @@
 - name: Kibana on boot
   shell: update-rc.d kibana4 defaults 96 9
 
-- name: Bind kibana yo localhost
+- name: Bind kibana to localhost
   lineinfile: dest=/opt/kibana/config/kibana.yml regexp='^host:' line='host{{':'}} "127.0.0.1"'
   notify: Restart Kibana
 
