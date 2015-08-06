@@ -19,7 +19,7 @@
 
 - name: Elasticsearch
   apt: name=elasticsearch=1.4.4
-  notify: Start Elasticearch
+  notify: Start Elasticsearch
 
 - name: Elasticsearch on boot
   shell: update-rc.d elasticsearch defaults 95 10
