@@ -1,0 +1,17 @@
+---
+
+- name: Add pkg-config
+  apt: name=pkg-config update_cache=yes
+
+- name: Check for libvips
+  shell: command -v vips
+  register: vips_installed
+
+- name: Add libvips installer
+  copy: src=preinstall.sh dest=/home/{{ ansible_ssh_user }}/preinstall.sh mode="u+x"
+  when: not vips_installed
+  sudo: no
+
+- name: Install libvips
+  shell: /home/{{ ansible_ssh_user }}/preinstall.sh
+  when: not vips_installed

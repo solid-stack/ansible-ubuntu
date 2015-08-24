@@ -75,6 +75,7 @@ Some of these depend on each other - you do not have to pick the dependencies. T
 * Oh My ZSH
 * PHP5-Fpm
 * ruby (2.2)
+* Sharp - with needed libvips install
 
 ## Trouble shooting
 
