@@ -1,0 +1,6 @@
+---
+project_name: desirelist-web-app
+project_group_name: desirelist
+nvm:
+  version: v0.29.0
+  node_version: v0.12.7

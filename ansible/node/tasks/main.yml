@@ -1,29 +1,49 @@
 ---
 
-- name: Import the NodeSource GPG key into apt
-  apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
-
-- name: Add NodeSource deb repository
-  apt_repository: repo='deb https://deb.nodesource.com/node {{ ansible_distribution_release }} main' state=present
-
-- name: Add NodeSource deb-src repository
-  apt_repository: repo='deb-src https://deb.nodesource.com/node {{ ansible_distribution_release }} main' state=present
-
-- name: Add NodeSource repository preferences
-  template:
-    src: deb_nodesource_com_node.pref
-    dest: /etc/apt/preferences.d/deb_nodesource_com_node.pref
-
-- name: Install Node.js
-  apt: pkg=nodejs state=installed update_cache=yes
-
-- name: Create .npm-packages
-  file: path=/home/{{ ansible_ssh_user }}/.npm-packages state=directory
+- name: Install nvm
   sudo: no
+  git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version={{ nvm.version }} accept_hostkey=yes
+  tags: nvm
 
-- name: Set place for global npms
-  shell: npm config set prefix '/home/{{ ansible_ssh_user }}/.npm-packages'
+- name: Source nvm in ~/.profile
   sudo: no
+  lineinfile: >
+    dest=~/.profile
+    line="source ~/.nvm/nvm.sh"
+    create=yes
+  tags: nvm
 
-- name: Add it to your paths
-  shell: echo 'export PATH="$PATH:$HOME/.npm-packages/bin"' >> /home/{{ ansible_ssh_user }}/.zshrc
+- name: Source nvm in ~/.zshrc
+  sudo: no
+  lineinfile: >
+    dest=~/.zshrc
+    line="source ~/.nvm/nvm.sh"
+    create=yes
+  tags: nvm
+
+- name: Install node
+  sudo: no
+  shell: source ~/.zshrc && nvm install {{ nvm.node_version }}
+  register: nvm_install_result
+  changed_when: "'is already installed.' not in nvm_install_result.stdout"
+  tags: nvm
+  args:
+    executable: /bin/zsh
+
+- name: Check if {{ nvm.node_version }} is the default node version
+  sudo: no
+  shell: source ~/.zshrc && nvm ls | grep -e 'default -> {{ nvm.node_version }}'
+  register: nvm_check_default
+  changed_when: False
+  ignore_errors: True
+  tags: nvm
+  args:
+    executable: /bin/zsh
+
+- name: Set default node version to {{ nvm.node_version }}
+  sudo: no
+  shell: source ~/.zshrc && nvm alias default {{ nvm.node_version }}
+  when: nvm_check_default|failed
+  tags: nvm
+  args:
+    executable: /bin/zsh

@@ -71,7 +71,7 @@ Some of these depend on each other - you do not have to pick the dependencies. T
 * Mongo
 * MySQL
 * Nginx
-* Node
+* Node via Nvm
 * Oh My ZSH
 * PHP5-Fpm
 * ruby (2.2)
@@ -86,3 +86,5 @@ If tasks are timing out due to a slow connection, add:
 ```
 
 You will have to break apart tasks `with_items` to indvidual ones.
+
+Since this uses node via nvm, you have to source ~/.zshrc (to load nvm) before any node or npm related task.

@@ -10,6 +10,7 @@
   - htop
   - wget
   - vim
+  - libssl-dev
 
 - name: Copy vimrc
   copy: src=.vimrc dest=/home/{{ ansible_ssh_user }}/.vimrc
