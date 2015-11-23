@@ -8,4 +8,5 @@ kibana:
   host_to_listen_on: staging.sample.com
   auth_user: someone
   auth_password: some_hard_to_break_password
-  proxy_port: 411  proxy_port: 411  env: dev
+  proxy_port: 411  
+  env: dev
