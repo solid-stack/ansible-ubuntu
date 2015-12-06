@@ -1,0 +1,28 @@
+---
+
+- name: Add PHP 5.6 PPA
+  apt_repository: repo="ppa:ondrej/php5-5.6" update_cache=yes
+
+- name: Install PHP 5.6
+  apt: name="{{ item }}" state=present force=yes
+  with_items:
+  - php-pear
+  - php5-cli
+  - php5-common
+  - php5-curl
+  - php5-dev
+  - php5-fpm
+  - php5-gd
+  - php5-imagick
+  - php5-imap
+  - php5-mcrypt
+  - php5-mongo
+  - php5-mysql
+  - php5-xmlrpc
+  - php5-xsl
+
+- name: Create socket directory
+  file: path=/var/run/ state=directory
+
+- name: Start php5-fpm service
+  service: name=php5-fpm state=started enabled=true

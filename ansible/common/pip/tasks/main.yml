@@ -1,0 +1,10 @@
+---
+
+- name: Checking essentials
+  apt: name="{{ item }}" state=present update_cache=yes
+  with_items:
+  - python-pip
+  - python-setuptools
+  - python-dev
+
+- command: pip install -U pip

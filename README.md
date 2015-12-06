@@ -10,6 +10,26 @@ add roles, variables, hosts, etc. This is a jumping off point that you customize
 
 This is not a replacement for [Ansible Galaxy](https://galaxy.ansible.com/). This is just a suite of Ansible roles I find useful for working with Ubuntu.
 
+Going through a restructuring to allow local `npm install` of this repo. The idea when that is done, is that all you have
+to do is npm install this for general use roles. It can be version controlled through npm. Your project based roles can
+be in your main repo and they can depend on the general purpose ones. So your main repo will not be cluttered with boilerplate.
+
+Project directory structur
+
+```
+ansible
+    group_vars
+    project
+        nginx
+        node
+        mongo
+node_modules
+    ansible_ubuntu
+        ansible
+            common
+                ...
+```
+
 ## Dependencies
 
 You need vagrant and ansible installed:
@@ -22,45 +42,6 @@ Ansible:
 sudo easy_install pip
 sudo pip install ansible
 ```
-
-## Example:
-
-```shell
-npm install -g ansible-ubuntu
-ansible-ubuntu -v
-vagrant up
-vagrant ssh
-```
-
-To run the playbook against a group:
-
-```
-ansible-playbook ansible/site.yml -l staging -i ansible/hosts
-```
-
-## How do I run it?
-
-1. `npm install -g ansible-ubuntu`
-1. `cd` into the directory you want to use. The directory will get an `ansible` directory filled with roles and a `Vagrantfile`.
-1. `ansible-ubuntu` will let you pick the roles you want included. There a suite of default roles always included. Look at the meta dir and for now you have to manually include some dependencies.
-    
-All the roles are generally setting up the environment. For project specific stuff (e.g. sites-available / enable), I'd
-suggest create a separate role that depends on of the main roles (e.g. `nginx-project` where meta has an `nginx` dependency).
-
-## What will be created?
-
-1. A directory called `ansible` filled with the roles you picked plus some default roles.
-1. In the `ansible` dir, a hosts file setup for Vagrant setting the local ip to `192.168.99`
-1. In the `ansible` dir, a `site.yml` listing the roles you picked.
-1. A `Vagrantfile` tuned for a Mac host.
-
-## Future Plans
-
-Make things more configurable.
-
-For example allow setting of local Vagrant ip, add more hosts, add some templating options...
-
-## List of roles
 
 Some of these depend on each other - you do not have to pick the dependencies. They are automatically included
 
