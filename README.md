@@ -2,33 +2,45 @@
 
 ## What is this?
 
-A simple minded playbook generator for Ansible. The output assumes use of Ubuntu or another `apt-get` based os. You also
-get a Vagrantfile.
+A set of Ansible roles for Ubuntu you can `npm install` locally.
 
-After running this you can just `vagrant up` to take a look at things. You'll have to customize as you see fit. Change ips,
-add roles, variables, hosts, etc. This is a jumping off point that you customize.
+To have Ansible check `node_modules/ansible-ubuntu` for roles add a file called `ansible.cfg` into the root of your project:
+ 
+```
+[defaults]
 
-This is not a replacement for [Ansible Galaxy](https://galaxy.ansible.com/). This is just a suite of Ansible roles I find useful for working with Ubuntu.
+roles_path = node_modules/ansible-ubuntu/ansible
+```
 
-Going through a restructuring to allow local `npm install` of this repo. The idea when that is done, is that all you have
-to do is npm install this for general use roles. It can be version controlled through npm. Your project based roles can
-be in your main repo and they can depend on the general purpose ones. So your main repo will not be cluttered with boilerplate.
+Then create a `Vagrantfile` (you can use `Vagrantfile.sample` to get started).
 
-Project directory structur
+In your `site.yml` and in your meta dirs you can refer to the `ansible-ubuntu` roles, e.g.:
 
 ```
-ansible
-    group_vars
-    project
-        nginx
-        node
-        mongo
-node_modules
-    ansible_ubuntu
-        ansible
-            common
-                ...
+---
+
+- name: Setup Solid Aggregator Stack
+  hosts: vagrant
+  sudo: yes
+  roles:
+    - common/oh-my-zsh
+    - common/elasticsearch
 ```
+
+If you add project level roles into your directory, then they can pull in these general purpose roles as follows:
+
+`project/nginx/tasks/meta/main.yml`
+
+```
+---
+dependencies:
+   - { role: 'common/nginx'}
+```
+
+Once this is setup, you can just `vagrant up`. The initial `vagrant up` will also provision things. Once the box exists
+you can `vagrant provision` to reprovision.
+
+This is not meant to be a replacement for [Ansible Galaxy](https://galaxy.ansible.com/). This is just a suite of Ansible roles I find useful for working with Ubuntu. 
 
 ## Dependencies
 
@@ -43,11 +55,12 @@ sudo easy_install pip
 sudo pip install ansible
 ```
 
-Some of these depend on each other - you do not have to pick the dependencies. They are automatically included
+Some of these depend on each other
 
-* Git (2.3+)
 * Elasticsearch
+* Git (2.3+)
 * Grasshopper - sets up [grasshopper-cli](https://github.com/Solid-Interactive/grasshopper-cli)
+* Java 8
 * Kibana4
 * Mongo
 * MySQL

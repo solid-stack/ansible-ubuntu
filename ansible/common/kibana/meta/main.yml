@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - {role: 'nginx'}
-  - {role: 'elasticsearch'}
+  - {role: 'common/nginx'}
+  - {role: 'common/elasticsearch'}

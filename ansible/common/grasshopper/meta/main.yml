@@ -1,5 +1,5 @@
 ---
 dependencies:
-   - { role: 'node'}
-   - { role: 'ruby'}
-   - { role: 'mongo'}
+   - { role: 'common/node'}
+   - { role: 'common/ruby'}
+   - { role: 'common/mongo'}

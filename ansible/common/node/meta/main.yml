@@ -1,4 +1,4 @@
 ---
 dependencies:
-   - { role: 'apt'}
-   - { role: 'oh-my-zsh'}
+   - { role: 'common/apt'}
+   - { role: 'common/oh-my-zsh'}
