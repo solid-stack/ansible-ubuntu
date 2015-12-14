@@ -1,5 +1,0 @@
----
-dependencies:
-   - { role: 'node'}
-   - { role: 'ruby'}
-   - { role: 'mongo'}

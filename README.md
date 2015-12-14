@@ -2,13 +2,45 @@
 
 ## What is this?
 
-A simple minded playbook generator for Ansible. The output assumes use of Ubuntu or another `apt-get` based os. You also
-get a Vagrantfile.
+A set of Ansible roles for Ubuntu you can `npm install` locally.
 
-After running this you can just `vagrant up` to take a look at things. You'll have to customize as you see fit. Change ips,
-add roles, variables, hosts, etc. This is a jumping off point that you customize.
+To have Ansible check `node_modules/ansible-ubuntu` for roles add a file called `ansible.cfg` into the root of your project:
+ 
+```
+[defaults]
 
-This is not a replacement for [Ansible Galaxy](https://galaxy.ansible.com/). This is just a suite of Ansible roles I find useful for working with Ubuntu.
+roles_path = node_modules/ansible-ubuntu/ansible
+```
+
+Then create a `Vagrantfile` (you can use `Vagrantfile.sample` to get started).
+
+In your `site.yml` and in your meta dirs you can refer to the `ansible-ubuntu` roles, e.g.:
+
+```
+---
+
+- name: Setup Solid Aggregator Stack
+  hosts: vagrant
+  sudo: yes
+  roles:
+    - common/oh-my-zsh
+    - common/elasticsearch
+```
+
+If you add project level roles into your directory, then they can pull in these general purpose roles as follows:
+
+`project/nginx/tasks/meta/main.yml`
+
+```
+---
+dependencies:
+   - { role: 'common/nginx'}
+```
+
+Once this is setup, you can just `vagrant up`. The initial `vagrant up` will also provision things. Once the box exists
+you can `vagrant provision` to reprovision.
+
+This is not meant to be a replacement for [Ansible Galaxy](https://galaxy.ansible.com/). This is just a suite of Ansible roles I find useful for working with Ubuntu. 
 
 ## Dependencies
 
@@ -23,50 +55,12 @@ sudo easy_install pip
 sudo pip install ansible
 ```
 
-## Example:
+Some of these depend on each other
 
-```shell
-npm install -g ansible-ubuntu
-ansible-ubuntu -v
-vagrant up
-vagrant ssh
-```
-
-To run the playbook against a group:
-
-```
-ansible-playbook ansible/site.yml -l staging -i ansible/hosts
-```
-
-## How do I run it?
-
-1. `npm install -g ansible-ubuntu`
-1. `cd` into the directory you want to use. The directory will get an `ansible` directory filled with roles and a `Vagrantfile`.
-1. `ansible-ubuntu` will let you pick the roles you want included. There a suite of default roles always included. Look at the meta dir and for now you have to manually include some dependencies.
-    
-All the roles are generally setting up the environment. For project specific stuff (e.g. sites-available / enable), I'd
-suggest create a separate role that depends on of the main roles (e.g. `nginx-project` where meta has an `nginx` dependency).
-
-## What will be created?
-
-1. A directory called `ansible` filled with the roles you picked plus some default roles.
-1. In the `ansible` dir, a hosts file setup for Vagrant setting the local ip to `192.168.99`
-1. In the `ansible` dir, a `site.yml` listing the roles you picked.
-1. A `Vagrantfile` tuned for a Mac host.
-
-## Future Plans
-
-Make things more configurable.
-
-For example allow setting of local Vagrant ip, add more hosts, add some templating options...
-
-## List of roles
-
-Some of these depend on each other - you do not have to pick the dependencies. They are automatically included
-
-* Git (2.3+)
 * Elasticsearch
+* Git (2.3+)
 * Grasshopper - sets up [grasshopper-cli](https://github.com/Solid-Interactive/grasshopper-cli)
+* Java 8
 * Kibana4
 * Mongo
 * MySQL

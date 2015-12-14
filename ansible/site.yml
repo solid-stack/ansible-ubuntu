@@ -1,6 +1,0 @@
----
-- name: Environment Setup
-  hosts: all
-  sudo: yes
-  roles:
-    - essentials

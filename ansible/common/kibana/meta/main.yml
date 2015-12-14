@@ -1,0 +1,4 @@
+---
+dependencies:
+  - {role: 'common/nginx'}
+  - {role: 'common/elasticsearch'}
