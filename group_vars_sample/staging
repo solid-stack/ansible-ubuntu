@@ -7,3 +7,5 @@ node:
   port_to_listen_on: 3008
 git:
   branch: deploy/staging
+elasticsearch:
+  bind: 127.0.0.1
