@@ -14,7 +14,7 @@
   shell: update-rc.d elasticsearch defaults 95 10
 
 - name: Bind to Elasticsearch to localhost
-  lineinfile: dest=/etc/elasticsearch/elasticsearch.yml regexp='^network.host:' line='network.host{{':'}} "{ elasticsearch.bind }"'
+  lineinfile: dest=/etc/elasticsearch/elasticsearch.yml regexp='^network.host:' line='network.host{{':'}} "{{ elasticsearch.bind }}"'
 
 - name: Start Elasticsearch
   service: name=elasticsearch state=started
