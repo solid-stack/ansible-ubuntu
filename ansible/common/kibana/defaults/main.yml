@@ -1,0 +1,6 @@
+---
+kibana:
+  auth_user: 'customize this'
+  auth_password: 'customize this'
+  proxy_port: 999
+  host_to_listen_on: 127.0.0.1

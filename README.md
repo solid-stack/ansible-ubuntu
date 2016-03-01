@@ -37,6 +37,10 @@ dependencies:
    - { role: 'common/nginx'}
 ```
 
+The roles have set defaults for the variables you can modify. Just look in the `defaults` dir of each node.
+
+There is a `provision` binary that is included. `-h` for help.
+
 Once this is setup, you can just `vagrant up`. The initial `vagrant up` will also provision things. Once the box exists
 you can `vagrant provision` to reprovision.
 

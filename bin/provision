@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#set -x # for debugging
+
+TAGS=""
+
+    while test $# -gt 0; do
+        case "$1" in
+            -h|--help)
+                echo "Ansible provisioning"
+                echo " "
+                echo "Provisions servers via Ansible. Must be run from project root"
+                echo " "
+                echo "options:"
+                echo "-h, --help        show help"
+                echo "-e|--environment  the hosts group to use - e.g. staging"
+                echo "-t|--tags         tags to run"
+                exit 0
+                ;;
+            -e|--environment)
+                shift
+                ENVIRONMENT=$1
+                ;;
+            -t|tags)
+                shift
+                TAGS=$1
+                shift
+                ;;
+            *)
+                break
+                ;;
+        esac
+    done
+
+if [ -z "$TAGS" ]; then
+    ansible-playbook ansible/site.yml -l $ENVIRONMENT -i ansible/hosts --ask-sudo-pass
+else
+    ansible-playbook ansible/site.yml -l $ENVIRONMENT -i ansible/hosts --tags $TAGS --ask-sudo-pass
+fi
