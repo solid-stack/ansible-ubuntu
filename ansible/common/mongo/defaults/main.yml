@@ -1,3 +1,8 @@
 ---
 mongo:
-  journaling: false
+  journaling: "false"
+  root_admin_name: "root"
+  root_admin_password: "sample root password"
+  backup_name: "backup"
+  backup_password: "sample backup password"
+  version: "3.2"

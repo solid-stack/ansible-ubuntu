@@ -1,0 +1,28 @@
+---
+
+- name: Turn off authorization
+  set_fact: mongo_auth_enabled="disabled"
+
+- name: Set mongo configuration file
+  template: src=mongo.conf dest=/etc/mongod.conf
+
+- name: Restart mongodb service
+  service: name=mongod state=restarted
+
+- name: create administrative user siteRootAdmin
+  mongodb_user:
+    database: admin
+    name: "{{ mongo.root_admin_name }}"
+    password: "{{ mongo.root_admin_password }}"
+    # always will update passwords if they differ. on_create will only set the password for newly created users.
+    update_password: "on_create"
+    roles: "root"
+
+- name: create backup user "backupuser"
+  mongodb_user:
+    database: admin
+    name: "{{ mongo.backup_name }}"
+    password: "{{ mongo.backup_password }}"
+    # always will update passwords if they differ. on_create will only set the password for newly created users.
+    update_password: "on_create"
+    roles: "backup,clusterMonitor"

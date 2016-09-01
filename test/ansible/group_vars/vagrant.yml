@@ -1,0 +1,5 @@
+---
+
+mongo:
+  root_admin_password: "my root password"
+  backup_password: "my backup password"

@@ -1,5 +1,7 @@
 # ansible-ubuntu (vagrant)
 
+Requires Ansible 2.1 or greater.
+
 ## What is this?
 
 A set of Ansible roles for Ubuntu you can `npm install` locally.
@@ -10,7 +12,11 @@ To have Ansible check `node_modules/ansible-ubuntu` for roles add a file called 
 [defaults]
 
 roles_path = node_modules/ansible-ubuntu/ansible
+hash_behaviour = merge
 ```
+
+Note that the merge hash behavior [allows you to override on value in a dictionary](http://stackoverflow.com/a/25131711/186636).
+http://docs.ansible.com/ansible/intro_configuration.html#hash-behaviour
 
 Then create a `Vagrantfile` (you can use `Vagrantfile.sample` to get started).
 
@@ -74,6 +80,20 @@ Some of these depend on each other
 * PHP5-Fpm
 * ruby (2.2)
 * Sharp - with needed libvips install
+
+* Mongo
+    * Single Instance
+    * Authorization enabled
+    
+        ```
+        mongo:
+          journaling: "false"
+          root_admin_name: "root"
+          root_admin_password: "sample root password"
+          backup_name: "backup"
+          backup_password: "sample backup password"
+          version: "3.2" # can be 3.0 or 3.2
+        ```
 
 ## Trouble shooting
 

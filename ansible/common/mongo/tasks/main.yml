@@ -1,17 +1,42 @@
 ---
+
 - name: Import the public key used by the package management system.
   apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=7F0CEB10
 
-- name: Create a list file for MongoDB.
-  template: src=mongodb-org-3.0.list dest=/etc/apt/sources.list.d/mongodb-org-3.0.list
+- name: Create init.d script to disable transparent hugepages
+  template: src=disable-transparent-hugepages dest=/etc/init.d/disable-transparent-hugepages mode="0755"
 
-- name: Install mongo
-  apt: name=mongodb-org update_cache=yes
-  async: 1800
+- name: Run hugepages init.d on boot
+  shell: update-rc.d disable-transparent-hugepages defaults
+
+- name: Create a list file for MongoDB.
+  template: src=mongodb-org-{{ mongo.version }}.list dest=/etc/apt/sources.list.d/mongodb-org-{{ mongo.version }}.list
 
 - name: Install pymongo for any project related mongo
   pip: name=pymongo
   async: 1800
 
-- name: Start mongo service
-  service: name=mongod state=started
+- name: Install mongo
+  apt: name=mongodb-org update_cache=yes
+  async: 1800
+
+- name: Wait until mongo is listening
+  wait_for: host=127.0.0.1 port="27017" delay=5 state=started
+
+- name: Check user admin is exists
+  shell: mongo --quiet -u {{ mongo.root_admin_name }} -p "{{ mongo.root_admin_password }}" --eval 'db.version()' admin
+  register: mongodb_user_admin_check
+  ignore_errors: true
+
+- name: Set root and backup users
+  when: mongodb_user_admin_check.rc != 0
+  include: authorization_setup.yml
+
+- name: Turn on authorization
+  set_fact: mongo_auth_enabled="enabled"
+
+- name: Set mongo configuration file
+  template: src=mongo.conf dest=/etc/mongod.conf
+
+- name: Restart mongodb service
+  service: name=mongod state=restarted
