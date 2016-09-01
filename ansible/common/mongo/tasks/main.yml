@@ -1,8 +1,5 @@
 ---
 
-- name: Log out password
-  debug: msg="Root password is {{ mongo.root_admin_password }}"
-
 - name: Import the public key used by the package management system.
   apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=7F0CEB10
 

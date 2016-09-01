@@ -1,0 +1,11 @@
+---
+
+- name: Create my user
+  mongodb_user:
+    login_user: "{{ mongo.root_admin_name }}"
+    login_password: "{{ mongo.root_admin_password }}"
+    database: testo
+    user: my_user
+    password: "sample user password"
+    state: present
+    roles: "dbAdmin"
