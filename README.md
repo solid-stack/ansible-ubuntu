@@ -84,6 +84,16 @@ Some of these depend on each other
 * Mongo
     * Single Instance
     * Authorization enabled
+    
+        ```
+        mongo:
+          journaling: "false"
+          root_admin_name: "root"
+          root_admin_password: "sample root password"
+          backup_name: "backup"
+          backup_password: "sample backup password"
+          version: "3.2" # can be 3.0 or 3.2
+        ```
 
 ## Trouble shooting
 
