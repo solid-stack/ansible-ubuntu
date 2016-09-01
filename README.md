@@ -70,6 +70,13 @@ Some of these depend on each other
 * Elasticsearch
 * Git (2.3+)
 * Grasshopper - sets up [grasshopper-cli](https://github.com/Solid-Interactive/grasshopper-cli)
+* Hostname
+
+    ```
+    server:
+      hostname: "{{ ansible_hostname }}"
+    ```
+      
 * Java 8
 * Kibana4
 * Mongo
