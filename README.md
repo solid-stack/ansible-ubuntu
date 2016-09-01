@@ -76,6 +76,13 @@ Some of these depend on each other
 * MySQL
 * Nginx
 * Node via Nvm
+
+    ```
+    nvm:
+        version: v0.31.0
+        node_version: v5.0.0
+    ```
+
 * Oh My ZSH
 * PHP5-Fpm
 * ruby (2.2)
