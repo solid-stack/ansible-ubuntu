@@ -102,6 +102,7 @@ Some of these depend on each other
         ```
         mongo:
           journaling: "false"
+          auth: "enabled"
           root_admin_name: "root"
           root_admin_password: "sample root password"
           backup_name: "backup"
