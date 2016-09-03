@@ -32,6 +32,9 @@
   when: mongodb_user_admin_check.rc != 0
   include: authorization_setup.yml
 
+- name: Turn on authorization
+  set_fact: mongo_auth_enabled="{{ mongo.auth }}"
+
 - name: Set mongo configuration file
   template: src=mongo.conf dest=/etc/mongod.conf
 
