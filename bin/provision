@@ -19,6 +19,7 @@ TAGS=""
             -e|--environment)
                 shift
                 ENVIRONMENT=$1
+                shift
                 ;;
             -t|tags)
                 shift
