@@ -1,7 +1,7 @@
 ---
 
 - name: Add PHP 5.6 PPA
-  apt_repository: repo="ppa:ondrej/php5-5.6" update_cache=yes
+  apt_repository: repo="ppa:ondrej/php" update_cache=yes
 
 - name: Install PHP 5.6
   apt: name="{{ item }}" state=present force=yes
