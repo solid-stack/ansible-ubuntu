@@ -12,5 +12,5 @@
 - name: Use default .zshrc
   command: cp /home/{{ ansible_ssh_user }}/.oh-my-zsh/templates/zshrc.zsh-template /home/{{ ansible_ssh_user }}/.zshrc
 
-- name: "Switching to theme {{ ohmyzsh.theme }}"
+- name: "Switching to {{ ohmyzsh.theme }} theme"
   lineinfile: dest=/home/{{ ansible_ssh_user }}/.zshrc regexp=^ZSH_THEME line=ZSH_THEME="{{ ohmyzsh.theme }}"
