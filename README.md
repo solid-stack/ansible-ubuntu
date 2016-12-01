@@ -91,6 +91,12 @@ Some of these depend on each other
     ```
 
 * Oh My ZSH
+    
+    ```
+    ohmyzsh:
+        theme: avit
+    ```
+
 * PHP5-Fpm
 * ruby (2.2)
 * Sharp - with needed libvips install
