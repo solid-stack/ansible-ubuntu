@@ -12,5 +12,5 @@
 - name: Use default .zshrc
   command: cp /home/{{ ansible_ssh_user }}/.oh-my-zsh/templates/zshrc.zsh-template /home/{{ ansible_ssh_user }}/.zshrc
 
-- name: Switch to avit theme
-  lineinfile: dest=/home/{{ ansible_ssh_user }}/.zshrc regexp=^ZSH_THEME line=ZSH_THEME="avit"
+- name: "Switching to {{ ohmyzsh.theme }} theme"
+  lineinfile: dest=/home/{{ ansible_ssh_user }}/.zshrc regexp=^ZSH_THEME line=ZSH_THEME="{{ ohmyzsh.theme }}"
