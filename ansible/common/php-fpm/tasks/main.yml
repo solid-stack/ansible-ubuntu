@@ -7,6 +7,7 @@
   apt: name="{{ item }}" state=present force=yes
   with_items:
   - php-pear
+  - php-mysql
   - php5-cli
   - php5-common
   - php5-curl
