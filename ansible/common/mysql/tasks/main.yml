@@ -6,7 +6,7 @@
   - libmysqlclient-dev
 
 - name: Install mysql
-  apt: pkg="mysql-server"
+  apt: pkg="mysql-server-5.6"
 
 - name: Install mysql for python
   pip: name=MySQL-python
