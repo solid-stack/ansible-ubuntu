@@ -115,6 +115,12 @@ Some of these depend on each other
           backup_password: "sample backup password"
           version: "3.2" # can be 3.0 or 3.2
         ```
+* LEMP
+* postfix
+    ```
+    postfix:
+        mailname: "{{ ansible_hostname }}"
+    ```
 
 ## Trouble shooting
 
