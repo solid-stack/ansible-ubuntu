@@ -1,0 +1,5 @@
+---
+dependencies:
+  - {role: 'common/nginx'}
+  - {role: 'common/mysql'}
+  - {role: 'common/php'}
