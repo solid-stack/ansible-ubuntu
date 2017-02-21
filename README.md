@@ -74,7 +74,7 @@ Some of these depend on each other
 
     ```
     server:
-      hostname: "{{ ansible_hostname }}"
+        hostname: "{{ ansible_hostname }}"
     ```
       
 * Java 8
@@ -107,18 +107,21 @@ Some of these depend on each other
     
         ```
         mongo:
-          journaling: "false"
-          auth: "enabled"
-          root_admin_name: "root"
-          root_admin_password: "sample root password"
-          backup_name: "backup"
-          backup_password: "sample backup password"
-          version: "3.2" # can be 3.0 or 3.2
+            journaling: "false"
+            auth: "enabled"
+            root_admin_name: "root"
+            root_admin_password: "sample root password"
+            backup_name: "backup"
+            backup_password: "sample backup password"
+            version: "3.2" # can be 3.0 or 3.2
         ```
+        
 * LEMP
 * postfix
+
     ```
     postfix:
+        main_mailer_type: Internet Site
         mailname: "{{ ansible_hostname }}"
     ```
 
