@@ -1,0 +1,26 @@
+---
+- name: Set postfix option hostname
+  debconf:
+    name: postifx
+    question: "postfix/mailname"
+    value: "{{ postfix.mailname }}"
+    vtype: string
+
+- name: Set postfix option type as internet site
+  debconf:
+    name: postfix
+    question: "postfix/main_mailer_type"
+    value: "{{ postfix.main_mailer_type }}"
+    vtype: string
+
+- name: Install postfix
+  become: yes
+  apt:
+    pkg: postfix
+  tags: postfix
+
+- name: Copy postfix config file
+  become: yes
+  template:
+    src: main.cf
+    dest: /etc/postfix/main.cf
