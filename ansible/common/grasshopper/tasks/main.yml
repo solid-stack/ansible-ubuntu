@@ -1,7 +1,7 @@
 ---
 # npm ansible command is difficult to use with nvm so just shell it:
 - name: Install global npms for grasshopper
-  sudo: no
+  become: no
   shell: source ~/.zshrc && npm install -g bower grunt-cli
   args:
     executable: /bin/zsh
@@ -18,4 +18,4 @@
 
 - name: Create log location
   file: path=/home/{{ ansible_ssh_user }}/logs state=directory
-  sudo: no
+  become: no

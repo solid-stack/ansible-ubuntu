@@ -2,7 +2,7 @@
 
 - name: Setup Server
   hosts: all
-  sudo: yes
+  become: yes
   roles:
     - common/hostname
     - mongo

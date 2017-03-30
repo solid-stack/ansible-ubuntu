@@ -1,12 +1,12 @@
 ---
 
 - name: Install nvm
-  sudo: no
+  become: no
   git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version={{ nvm.version }} accept_hostkey=yes
   tags: nvm
 
 - name: Source nvm in ~/.profile
-  sudo: no
+  become: no
   lineinfile: >
     dest=~/.profile
     line="source ~/.nvm/nvm.sh"
@@ -14,7 +14,7 @@
   tags: nvm
 
 - name: Source nvm in ~/.zshrc
-  sudo: no
+  become: no
   lineinfile: >
     dest=~/.zshrc
     line="source ~/.nvm/nvm.sh"
@@ -22,7 +22,7 @@
   tags: nvm
 
 - name: Install node
-  sudo: no
+  become: no
   shell: source ~/.zshrc && nvm install {{ nvm.node_version }}
   register: nvm_install_result
   changed_when: "'is already installed.' not in nvm_install_result.stdout"
@@ -31,7 +31,7 @@
     executable: /bin/zsh
 
 - name: Check if {{ nvm.node_version }} is the default node version
-  sudo: no
+  become: no
   shell: source ~/.zshrc && nvm ls | grep -e 'default -> {{ nvm.node_version }}'
   register: nvm_check_default
   changed_when: False
@@ -41,7 +41,7 @@
     executable: /bin/zsh
 
 - name: Set default node version to {{ nvm.node_version }}
-  sudo: no
+  become: no
   shell: source ~/.zshrc && nvm alias default {{ nvm.node_version }}
   when: nvm_check_default|failed
   tags: nvm

@@ -10,7 +10,7 @@
 - name: Add libvips installer
   copy: src=preinstall.sh dest=/home/{{ ansible_ssh_user }}/preinstall.sh mode="u+x"
   when: not vips_installed
-  sudo: no
+  become: no
 
 - name: Install libvips
   shell: /home/{{ ansible_ssh_user }}/preinstall.sh

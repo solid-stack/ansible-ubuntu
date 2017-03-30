@@ -27,7 +27,7 @@ In your `site.yml` and in your meta dirs you can refer to the `ansible-ubuntu` r
 
 - name: Setup Solid Aggregator Stack
   hosts: vagrant
-  sudo: yes
+  become: yes
   roles:
     - common/oh-my-zsh
     - common/elasticsearch
