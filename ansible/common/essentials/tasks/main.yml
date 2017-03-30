@@ -8,6 +8,7 @@
   - build-essential
   - curl
   - htop
+  - mailutils
   - wget
   - vim
   - libssl-dev
