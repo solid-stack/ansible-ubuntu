@@ -123,6 +123,7 @@ Some of these depend on each other
     postfix:
         main_mailer_type: Internet Site
         mailname: "{{ ansible_hostname }}"
+        protocol: ipv4
     ```
 
 ## Trouble shooting
