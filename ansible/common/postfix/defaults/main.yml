@@ -2,3 +2,4 @@
 postfix:
   main_mailer_type: Internet Site
   mailname: "{{ ansible_hostname }}"
+  protocol: ipv4
