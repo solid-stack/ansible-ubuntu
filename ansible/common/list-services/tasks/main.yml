@@ -16,7 +16,7 @@
   debug: msg="{{ elasticsearch_running.stdout }}"
 
 - name: Register if phpfpm is running
-  shell: sudo service php5-fpm status
+  shell: sudo service php7.0-fpm status
   register: phpfpm_running
   ignore_errors: yes
 
@@ -34,7 +34,7 @@
 - name: Register if mysql is running
   shell: sudo service mysql status
   register: mysql_running
-  ignore_errors: yes  
+  ignore_errors: yes
 
 - name: Display if mysql is running
   debug: msg="{{ mysql_running.stdout }}"

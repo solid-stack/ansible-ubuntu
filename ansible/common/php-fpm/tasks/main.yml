@@ -1,29 +1,29 @@
 ---
 
-- name: Add PHP 5.6 PPA
+- name: Add PHP 7.0 PPA
   apt_repository: repo="ppa:ondrej/php" update_cache=yes
 
-- name: Install PHP 5.6
+- name: Install PHP 7.0
   apt: name="{{ item }}" state=present force=yes
   with_items:
   - php-pear
   - php-mysql
-  - php5-cli
-  - php5-common
-  - php5-curl
-  - php5-dev
-  - php5-fpm
-  - php5-gd
-  - php5-imagick
-  - php5-imap
-  - php5-mcrypt
-  - php5-mongo
-  - php5-mysql
-  - php5-xmlrpc
-  - php5-xsl
+  - php7.0-cli
+  - php7.0-common
+  - php7.0-curl
+  - php7.0-dev
+  - php7.0-fpm
+  - php7.0-gd
+  - php-imagick
+  - php7.0-imap
+  - php7.0-mcrypt
+  - mongodb
+  - php7.0-mysql
+  - php7.0-xmlrpc
+  - php7.0-xsl
 
 - name: Create socket directory
   file: path=/var/run/ state=directory
 
-- name: Start php5-fpm service
-  service: name=php5-fpm state=started enabled=true
+- name: Start php7.0-fpm service
+  service: name=php7.0-fpm state=started enabled=true

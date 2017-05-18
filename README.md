@@ -7,7 +7,7 @@ Requires Ansible 2.1 or greater.
 A set of Ansible roles for Ubuntu you can `npm install` locally.
 
 To have Ansible check `node_modules/ansible-ubuntu` for roles add a file called `ansible.cfg` into the root of your project:
- 
+
 ```
 [defaults]
 
@@ -50,7 +50,7 @@ There is a `provision` binary that is included. `-h` for help.
 Once this is setup, you can just `vagrant up`. The initial `vagrant up` will also provision things. Once the box exists
 you can `vagrant provision` to reprovision.
 
-This is not meant to be a replacement for [Ansible Galaxy](https://galaxy.ansible.com/). This is just a suite of Ansible roles I find useful for working with Ubuntu. 
+This is not meant to be a replacement for [Ansible Galaxy](https://galaxy.ansible.com/). This is just a suite of Ansible roles I find useful for working with Ubuntu.
 
 ## Dependencies
 
@@ -76,7 +76,7 @@ Some of these depend on each other
     server:
         hostname: "{{ ansible_hostname }}"
     ```
-      
+
 * Java 8
 * Kibana4
 * Mongo
@@ -91,20 +91,20 @@ Some of these depend on each other
     ```
 
 * Oh My ZSH
-    
+
     ```
     ohmyzsh:
         theme: avit
     ```
 
-* PHP5-Fpm
+* PHP7.0-Fpm
 * ruby (2.2)
 * Sharp - with needed libvips install
 
 * Mongo
     * Single Instance
     * Authorization enabled
-    
+
         ```
         mongo:
             journaling: "false"
@@ -115,7 +115,7 @@ Some of these depend on each other
             backup_password: "sample backup password"
             version: "3.2" # can be 3.0 or 3.2
         ```
-        
+
 * LEMP
 * postfix
 
