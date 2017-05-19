@@ -1,3 +1,4 @@
 [defaults]
 
 roles_path = node_modules/ansible-ubuntu/ansible
+hash_behaviour = merge
