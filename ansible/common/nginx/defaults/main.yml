@@ -1,0 +1,3 @@
+---
+nginx:
+  replace_template: False

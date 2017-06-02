@@ -1,6 +1,6 @@
 {
     "name": "ansible-ubuntu",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "description": "Playbook generator for Ansible with Ubuntu",
     "main": "index.js",
     "scripts": {
@@ -16,7 +16,7 @@
     "bin": {
         "provision": "./bin/provision"
     },
-    "author": "Peter Ajtai <peter.ajtai@thinksolid.com>",
+    "author": "Peter Ajtai <peter.ajtai@soliddigital.com>",
     "license": "MIT",
     "dependencies": {
         "bluebird": "^2.9.13",

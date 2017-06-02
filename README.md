@@ -68,6 +68,14 @@ sudo pip install ansible
 Some of these depend on each other
 
 * Elasticsearch
+    * You can adjust memory in `/etc/elasticsearch/jvm.options`: defaults: `-Xms2g` `Xmx2g`
+
+    ```
+    elasticsearch:
+      bind: 127.0.0.1
+      version: 5.4.1
+    ```  
+
 * Git (2.3+)
 * Grasshopper - sets up [grasshopper-cli](https://github.com/Solid-Interactive/grasshopper-cli)
 * Hostname
@@ -116,6 +124,14 @@ Some of these depend on each other
             version: "3.2" # can be 3.0 or 3.2
         ```
 
+* Nginx
+    * If you want to use the `nginx.conf` from this repo, set `nginx.replace_template` to `True`. The default is `False`
+    
+        ```
+        nginx:
+            replace_template: False
+        ```
+        
 * LEMP
 * postfix
 

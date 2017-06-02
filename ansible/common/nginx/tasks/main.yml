@@ -29,5 +29,6 @@
 
 - name: Copy main nginx config
   template: src=nginx.conf dest=/etc/nginx/nginx.conf
+  when: nginx.replace_template
   notify:
     - Reload Nginx
