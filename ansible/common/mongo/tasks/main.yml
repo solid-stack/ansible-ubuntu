@@ -1,7 +1,7 @@
 ---
 
 - name: Import the public key used by the package management system.
-  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=7F0CEB10
+  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=0C49F3730359A14518585931BC711F9BA15703C6
 
 - name: Create init.d script to disable transparent hugepages
   template: src=disable-transparent-hugepages dest=/etc/init.d/disable-transparent-hugepages mode="0755"
@@ -10,7 +10,7 @@
   shell: update-rc.d disable-transparent-hugepages defaults
 
 - name: Create a list file for MongoDB.
-  template: src=mongodb-org-{{ mongo.version }}.list dest=/etc/apt/sources.list.d/mongodb-org-{{ mongo.version }}.list
+  template: src=mongodb-org.list dest=/etc/apt/sources.list.d/mongodb-org-{{ mongo.version }}.list
 
 - name: Install pymongo for any project related mongo
   pip: name=pymongo

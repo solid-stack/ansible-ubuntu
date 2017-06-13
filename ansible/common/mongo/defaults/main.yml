@@ -6,4 +6,4 @@ mongo:
   root_admin_password: "sample root password"
   backup_name: "backup"
   backup_password: "sample backup password"
-  version: "3.2"
+  version: "3.4"
