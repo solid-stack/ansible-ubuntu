@@ -13,7 +13,7 @@
 
 - name: Mysql BOF
   lineinfile: 
-    path: /etc/mysql/my.conf 
+    path: /etc/mysql/my.cnf
     insertbefore: "BOF"
     line: "[mysql]"
 
