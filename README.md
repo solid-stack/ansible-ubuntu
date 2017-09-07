@@ -2,6 +2,9 @@
 
 Requires Ansible 2.1 or greater.
 
+* 2.0.2 - Ubuntu 16
+* 1.8.1 - Ubuntu 14
+
 ## What is this?
 
 A set of Ansible roles for Ubuntu you can `npm install` locally.
@@ -121,7 +124,7 @@ Some of these depend on each other
             root_admin_password: "sample root password"
             backup_name: "backup"
             backup_password: "sample backup password"
-            version: "3.2" # can be 3.0 or 3.2
+            version: "3.4.7" # version has to be 3.0.X, 3.2.X, or 3.4.X
         ```
 
 * Nginx

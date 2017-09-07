@@ -1,0 +1,33 @@
+---
+
+- name: Install huge pages
+  apt:
+    name: hugepages
+
+- name: Disable huge pages
+  shell: hugeadm --thp-never
+  become: yes
+
+- name: Install pymongo for any project related mongo
+  pip: name=pymongo
+  async: 1800
+
+- name: Install mongo 3.0.x
+  when: mongo.version | match("^3.0")
+  include: install-3-0-x.yml
+
+- name: Install mongo 3.2.x
+  when: mongo.version | match("^3.2")
+  include: install-3-2-x.yml
+
+- name: Install mongo 3.4.x
+  when: mongo.version | match("^3.4")
+  include: install-3-4-x.yml
+
+- name: Apt get update
+  apt: update_cache=yes
+
+- name: Install mongo
+  apt: name={{ item }} update_cache=yes
+  with_items:
+    - mongodb-org={{ mongo.version }}
