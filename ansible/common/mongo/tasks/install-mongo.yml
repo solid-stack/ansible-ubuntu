@@ -28,6 +28,6 @@
   apt: update_cache=yes
 
 - name: Install mongo
-  apt: name={{ item }} update_cache=yes
+  apt: name={{ item }}
   with_items:
     - mongodb-org={{ mongo.version }}

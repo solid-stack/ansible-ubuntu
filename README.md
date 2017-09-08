@@ -2,6 +2,8 @@
 
 Requires Ansible 2.1 or greater.
 
+* 2.1.0 - Ubuntu 16 
+    * + Certbot
 * 2.0.2 - Ubuntu 16
 * 1.8.1 - Ubuntu 14
 
@@ -70,6 +72,11 @@ sudo pip install ansible
 
 Some of these depend on each other
 
+* Certbot
+    * Getting certbot to work fully automated is a little tricky, since it requires working http virtual hosts for all domain, and then you have to switch to working https configs.
+    * You must fill out `certbot.email`
+    * You must fill out `certbot.domains`
+    * If you want to run the certbot command yourself, set `certbot.create_certs` to `false`.
 * Elasticsearch
     * You can adjust memory in `/etc/elasticsearch/jvm.options`: defaults: `-Xms2g` `Xmx2g`
 

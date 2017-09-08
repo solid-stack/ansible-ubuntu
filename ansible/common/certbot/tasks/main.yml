@@ -1,0 +1,39 @@
+---
+- name: Install pexpect
+  pip:
+    name: pexpect
+
+# https://certbot.eff.org/all-instructions/#ubuntu-16-04-xenial-nginx
+- name: Add certbot ppa
+  apt_repository:
+    repo: 'ppa:certbot/certbot'
+
+- name: Apt get update
+  apt: update_cache=yes
+
+- name: Install certbot
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - software-properties-common
+    - python-certbot-nginx
+
+- name: Create certs
+  expect:
+    command: certbot --nginx certonly -m {{ certbot.email }} -d {{ certbot.domains }}
+    responses:
+      '\(A\)gree/\(C\)ancel': "A"
+      '\(Y\)es/\(N\)o': "N"
+      '\(E\)xpand/\(C\)ancel': "E"
+      'Keep the existing certificate': 1
+  become: yes
+  when: certbot.create_certs
+
+- name: Cront to renew every 2 months
+  cron:
+    name: "renew certs"
+    minute: "0"
+    hour: "7"
+    day: "1"
+    month: "*/2"
+    job: "sudo certbot renew"
