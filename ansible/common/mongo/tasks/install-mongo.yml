@@ -1,5 +1,8 @@
 ---
 
+- debug:
+    msg: "Mongo version set to: {{ mongo.version }}"
+
 - name: Install huge pages
   apt:
     name: hugepages

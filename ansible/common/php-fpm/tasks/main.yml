@@ -1,29 +1,58 @@
 ---
 
-- name: Add PHP 7.0 PPA
+- name: Remove all other PHP packages
+  apt:
+    name: "php{{ item }}-common"
+    state: absent
+    purge: yes
+    force: yes
+  when: php.version != item
+  with_items:
+    - "5.6"
+    - "7.0"
+    - "7.1"
+
+- name: Add PHP PPA
   apt_repository: repo="ppa:ondrej/php" update_cache=yes
 
-- name: Install PHP 7.0
-  apt: name="{{ item }}" state=present force=yes
+- name: Install PHP {{ php.version }}
+  apt:
+    name: "{{ item }}"
+    state: present
+    force: yes
   with_items:
   - php-pear
   - php-mysql
-  - php7.0-cli
-  - php7.0-common
-  - php7.0-curl
-  - php7.0-dev
-  - php7.0-fpm
-  - php7.0-gd
-  - php-imagick
-  - php7.0-imap
-  - php7.0-mcrypt
-  - mongodb
-  - php7.0-mysql
-  - php7.0-xmlrpc
-  - php7.0-xsl
+  - php{{ php.version }}-cli
+  - php{{ php.version }}-common
+  - php{{ php.version }}-curl
+  - php{{ php.version }}-dev
+  - php{{ php.version }}-fpm
+  - php{{ php.version }}-gd
+  - php{{ php.version }}-imagick
+  - php{{ php.version }}-imap
+  - php{{ php.version }}-mbstring
+  - php{{ php.version }}-mcrypt
+  - php{{ php.version }}-mysql
+  - php{{ php.version }}-xmlrpc
+  - php{{ php.version }}-xsl
 
-- name: Create socket directory
-  file: path=/var/run/ state=directory
+- name: Install mongo driver for php5
+  apt:
+    name: php{{ php.version }}-mongo
+  when: php.version | match("^5.")
 
-- name: Start php7.0-fpm service
-  service: name=php7.0-fpm state=started enabled=true
+- name: Install mongo driver for php7
+  apt:
+    name: php{{ php.version }}-mongodb
+  when: php.version | match("^7.")
+
+- name: Ensure socket directory
+  file:
+    path: /var/run/ state=directory
+
+- name: Start php{{ php.version }}-fpm service
+  service:
+    name: php{{ php.version }}-fpm
+    state: started
+    enabled: true

@@ -2,10 +2,13 @@
 
 Requires Ansible 2.1 or greater.
 
+* 2.1.1 - Ubuntu 16 - Do not install mongo as part of php, and some Elasticsearch tweaks
 * 2.1.0 - Ubuntu 16 
     * + Certbot
 * 2.0.2 - Ubuntu 16
 * 1.8.1 - Ubuntu 14
+* 1.7.0 - Ubuntu 14
+    * PHP 7
 
 ## What is this?
 
@@ -78,7 +81,7 @@ Some of these depend on each other
     * You must fill out `certbot.domains`
     * If you want to run the certbot command yourself, set `certbot.create_certs` to `false`.
 * Elasticsearch
-    * You can adjust memory in `/etc/elasticsearch/jvm.options`: defaults: `-Xms2g` `Xmx2g`
+    * For ES 5.x, you can adjust memory in `/etc/elasticsearch/jvm.options`: defaults: `-Xms2g` `Xmx2g`
 
     ```
     elasticsearch:
@@ -97,7 +100,6 @@ Some of these depend on each other
 
 * Java 8
 * Kibana4
-* Mongo
 * MySQL
 * Nginx
 * Node via Nvm
@@ -115,11 +117,18 @@ Some of these depend on each other
         theme: avit
     ```
 
-* PHP7.0-Fpm
+* PHP Fpm
+    * define the version you want - all others will be removed
+    
+        ```
+        php:
+            version: 7.1
+        ```
 * ruby (2.2)
 * Sharp - with needed libvips install
 
 * Mongo
+    * Will skip mongo installation if mongo already installed
     * Single Instance
     * Authorization enabled
 
