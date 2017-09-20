@@ -49,7 +49,9 @@
 
 - name: Ensure socket directory
   file:
-    path: /var/run/ state=directory
+    path: /var/run
+    state: directory
+  ignore_errors: yes # sometimes it's already a link TODO: check upfront
 
 - name: Start php{{ php.version }}-fpm service
   service:

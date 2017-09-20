@@ -11,10 +11,6 @@
   shell: hugeadm --thp-never
   become: yes
 
-- name: Install pymongo for any project related mongo
-  pip: name=pymongo
-  async: 1800
-
 - name: Install mongo 3.0.x
   when: mongo.version | match("^3.0")
   include: install-3-0-x.yml

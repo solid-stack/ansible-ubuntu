@@ -1,5 +1,9 @@
 ---
 
+- name: Install pymongo for any project related mongo
+  pip: name=pymongo
+  async: 1800
+
 - name: Check if mongo installed
   shell: which mongo
   register: mongo_installed
