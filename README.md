@@ -2,6 +2,7 @@
 
 Requires Ansible 2.1 or greater.
 
+* 2.1.2 - Ubuntu 16 - Patch for checking on /var/run in php
 * 2.1.1 - Ubuntu 16 - Do not install mongo as part of php, and some Elasticsearch tweaks
 * 2.1.0 - Ubuntu 16 
     * + Certbot
