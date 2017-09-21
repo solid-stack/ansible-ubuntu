@@ -1,6 +1,6 @@
 {
     "name": "ansible-ubuntu",
-    "version": "2.1.2",
+    "version": "2.1.3",
     "description": "Playbook generator for Ansible with Ubuntu",
     "main": "index.js",
     "scripts": {
