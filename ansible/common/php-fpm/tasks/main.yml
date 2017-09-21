@@ -33,6 +33,7 @@
   - php{{ php.version }}-imap
   - php{{ php.version }}-mbstring
   - php{{ php.version }}-mcrypt
+  - php{{ php.version }}-mongodb
   - php{{ php.version }}-mysql
   - php{{ php.version }}-xmlrpc
   - php{{ php.version }}-xsl
