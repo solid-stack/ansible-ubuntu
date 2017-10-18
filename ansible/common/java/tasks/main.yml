@@ -1,12 +1,4 @@
 ---
-- name: Accept oracle license
-  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
-
-- name: Add Oracle Java Repository
-  apt_repository: repo='ppa:webupd8team/java'
-
-- name: Java8 Installer
-  apt: name=oracle-java8-installer update_cache=yes
-
 - name: Java8 Set Default
-  apt: name=oracle-java8-set-default
+  apt:
+    name: default-jdk

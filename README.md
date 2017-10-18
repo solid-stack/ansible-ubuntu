@@ -2,13 +2,13 @@
 
 Requires Ansible 2.1 or greater.
 
-* 2.1.2 - Ubuntu 16 - Patch for checking on /var/run in php
-* 2.1.1 - Ubuntu 16 - Do not install mongo as part of php, and some Elasticsearch tweaks
-* 2.1.0 - Ubuntu 16 
-    * + Certbot
-* 2.0.2 - Ubuntu 16
-* 1.8.1 - Ubuntu 14
-* 1.7.0 - Ubuntu 14
+* 2.1.4 - Updating Java install to work - Oracle JDK via webupd8team is now broken
+* 2.1.3 - Adding mongo driver to phpt
+* 2.1.2 - Patch for checking on /var/run in php
+* 2.1.1 - Do not install mongo as part of php, and some Elasticsearch tweaks
+* 2.1.0 - Certbot
+* 2.0.2 - Testing this and future versions on *Ubuntu 16*
+* 1.7.0 - Testing 1.x versions on *Ubuntu 14*
     * PHP 7
 
 ## What is this?

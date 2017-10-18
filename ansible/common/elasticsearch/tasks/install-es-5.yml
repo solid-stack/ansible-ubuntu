@@ -1,6 +1,4 @@
 ---
-- apt_repository: repo="ppa:webupd8team/java"
-
 - name: Add Elasticsearch key
   apt_key:
     url: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
