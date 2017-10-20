@@ -1,3 +1,5 @@
 ---
 nginx:
   replace_template: False
+php:
+  version: 7.0
