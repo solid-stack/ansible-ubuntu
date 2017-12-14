@@ -9,7 +9,6 @@ Requires Ansible 2.1 or greater.
 * 2.1.0 - Certbot
 * 2.0.2 - Testing this and future versions on *Ubuntu 16*
 * 1.7.0 - Testing 1.x versions on *Ubuntu 14*
-    * PHP 7
 
 ## What is this?
 
@@ -123,7 +122,7 @@ Some of these depend on each other
     
         ```
         php:
-            version: 7.1
+            version: '7.1'
         ```
 * ruby (2.2)
 * Sharp - with needed libvips install
