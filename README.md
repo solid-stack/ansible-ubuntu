@@ -144,6 +144,14 @@ Some of these depend on each other
             version: "3.4.7" # version has to be 3.0.X, 3.2.X, or 3.4.X
         ```
 
+* Mysql
+
+    ```
+    mysql:
+        version: 5.7
+        bind: 127.0.0.1
+    ```
+        
 * Nginx
     * If you want to use the `nginx.conf` from this repo, set `nginx.replace_template` to `True`. The default is `False`
     
