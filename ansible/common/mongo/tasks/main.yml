@@ -20,6 +20,13 @@
   shell: systemctl enable mongod
   become: yes
 
+- name: Ensure db dir owned by mongodb
+  file:
+    path: /var/lib/mongodb
+    state: directory
+    owner: mongodb
+    group: mongodb
+
 - name: Enable mongo service
   systemd:
     name: mongod
