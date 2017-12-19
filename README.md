@@ -101,6 +101,18 @@ Some of these depend on each other
 * Java 8
 * Kibana4
 * MySQL
+
+    ```
+    mysql:
+      version: 5.7
+    ``` 
+
+    MySQL 5.7 now binds to 127.0.0.1 by default. If you want to bind somewhere else add a linefile to modify. Example:
+    
+    ```
+    lineinfile: dest=/etc/mysql/mysql.conf.d/mysqld.cnf regexp="^bind-address\s*=" line="bind-address = {{ mysql.bind }}"
+    ```
+ 
 * Nginx
 * Node via Nvm
 

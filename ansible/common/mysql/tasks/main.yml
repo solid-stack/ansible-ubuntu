@@ -10,14 +10,3 @@
 
 - name: Install mysql for python
   pip: name=MySQL-python
-
-- name: Mysql BOF
-  lineinfile: 
-    path: /etc/mysql/my.cnf
-    insertbefore: "BOF"
-    line: "[mysql]"
-
-- name: Bind Localhost
-  lineinfile: path=/etc/mysql/my.cnf regexp="^bind-address\s*=" line="bind-address = {{ mysql.bind }}"
-  notify:
-    - Start Mysql
