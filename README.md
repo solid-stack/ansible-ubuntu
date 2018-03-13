@@ -2,6 +2,7 @@
 
 Requires Ansible 2.1 or greater.
 
+* 2.2.0 - XDebug for php-fpm 7.1
 * 2.1.4 - Updating Java install to work - Oracle JDK via webupd8team is now broken
 * 2.1.3 - Adding mongo driver to phpt
 * 2.1.2 - Patch for checking on /var/run in php
