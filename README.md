@@ -73,7 +73,8 @@ sudo easy_install pip
 sudo pip install ansible
 ```
 
-Some of these depend on each other
+Some of these depend on each other.
+You might have to add the php version to your group_vars ( `php.version` )
 
 * Certbot
     * Getting certbot to work fully automated is a little tricky, since it requires working http virtual hosts for all domain, and then you have to switch to working https configs.
@@ -180,6 +181,9 @@ Some of these depend on each other
         mailname: "{{ ansible_hostname }}"
         protocol: ipv4
     ```
+
+* XDebug
+    * This one is very specific for php-fpm 7.1. It was created from https://xdebug.org/wizard.php
 
 ## Trouble shooting
 

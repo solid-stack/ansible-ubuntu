@@ -1,0 +1,45 @@
+---
+- name: Get file
+  get_url:
+    url: http://xdebug.org/files/xdebug-2.6.0.tgz
+    dest: /home/vagrant
+
+- name: Expand
+  shell: tar -xvzf xdebug-2.6.0.tgz
+  args:
+    chdir: /home/vagrant
+
+- name: PHPize
+  shell: '{{ item }}'
+  args:
+    chdir: /home/vagrant/xdebug-2.6.0
+  with_items:
+    - phpize
+    - ./configure
+    - make
+    - cp modules/xdebug.so /usr/lib/php/20160303
+
+- name: Update php.ini
+  lineinfile:
+    path: /etc/php/7.1/fpm/php.ini
+    regexp: '{{ item.regexp }}'
+    line: '{{ item.line }}'
+  with_items:
+    - regexp: ^zend_extension
+      line: zend_extension = /usr/lib/php/20160303/xdebug.so
+    - regexp: ^xdebug.remote_enable
+      line: xdebug.remote_enable = 1
+    - regexp: ^xdebug.remote_autostart
+      line: xdebug.remote_autostart = 1
+    - regexp: ^xdebug.remote_connect_back
+      line: xdebug.remote_connect_back = 1
+
+- name: Start php{{ php.version }}-fpm service
+  service:
+    name: php{{ php.version }}-fpm
+    state: started
+    enabled: true
+
+- name: Reload nginx
+  command: nginx -s reload
+
