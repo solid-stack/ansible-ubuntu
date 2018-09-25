@@ -35,6 +35,10 @@ A set of Ansible roles for Ubuntu you can `npm install` locally.
 
 ## How do you use this?
 
+```bash
+npm install ansible-ubuntu
+```
+
 To have Ansible check `node_modules/ansible-ubuntu` for roles add a file called `ansible.cfg` into the root of your project:
 
 ```
