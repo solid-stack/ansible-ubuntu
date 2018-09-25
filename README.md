@@ -31,7 +31,7 @@ A set of Ansible roles for Ubuntu you can `npm install` locally.
 | `common/postfix` | Install and lightly configure Postfix |
 | `common/ruby` | Install Ruby |
 | `common/sharp` | Install dependencies needed for the [Sharp NPM](https://www.npmjs.com/package/sharp)
-| `common/xdebug` | Install xdebug for PHP 7.1 |
+| `common/xdebug` | Install xdebug for PHP 7.x|
 
 ## How do you use this?
 

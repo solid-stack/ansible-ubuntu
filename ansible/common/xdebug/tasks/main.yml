@@ -21,7 +21,7 @@
 
 - name: Update php.ini
   lineinfile:
-    path: /etc/php/7.1/fpm/php.ini
+    path: /etc/php/{{ php.version }}/fpm/php.ini
     regexp: '{{ item.regexp }}'
     line: '{{ item.line }}'
   with_items:
