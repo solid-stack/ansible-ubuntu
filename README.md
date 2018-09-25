@@ -15,6 +15,35 @@ Requires Ansible 2.1 or greater.
 
 A set of Ansible roles for Ubuntu you can `npm install` locally.
 
+## What's included?
+
+| Role | Description |
+| --- | --- |
+| `common/apt` | Make sure apt-get can work with https |
+| `common/certbot` | Install certbot and create certs |
+| `common/elasticsearch` | Instsall elasticsearch |
+| `common/essentials` | Install some commonly used apt packages and install a `.vimrc` |
+| `common/git` | Install git from the git-core ppa |
+| `common/grasshopper` | Install dependencies needed for the [Grasshopper CMS](https://github.com/grasshopper-cms/grasshopper-cms) |
+| `common/hostname` | Update server hostname |
+| `common/info` | Print out the ubuntu version |
+| `common/java` | Install Java |
+| `common/lemp` | Install NGINX, MySQL, and PHP-FPM |
+| `common/list-services` | Display if some hard coded services are running |
+| `common/mongo` | Install mongo |
+| `commmon/mysql` | Install MySQL |
+| `common/nginx` | Install NGINX |
+| `common/node` | Install Node via NVM |
+| `common/oh-my-zsh` | Install Oh My ZSH |
+| `common/php-fpm` | Install PHP-FPM 7.2, 7.1, 7.0, or 5.6 |
+| `common/pip` | Install PIP |
+| `common/postfix` | Install and lightly configure Postfix |
+| `common/ruby` | Install Ruby |
+| `common/sharp` | Install dependencies needed for the [Sharp NPM](https://www.npmjs.com/package/sharp)
+| `common/xdebug` | Install xdebug for PHP 7.1 |
+
+## How do you use this?
+
 To have Ansible check `node_modules/ansible-ubuntu` for roles add a file called `ansible.cfg` into the root of your project:
 
 ```
@@ -73,6 +102,8 @@ Ansible:
 sudo easy_install pip
 sudo pip install ansible
 ```
+
+## Options for Specific Roles
 
 Some of these depend on each other.
 You might have to add the php version to your group_vars ( `php.version` )
