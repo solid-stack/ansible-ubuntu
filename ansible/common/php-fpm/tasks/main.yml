@@ -11,6 +11,7 @@
     - "5.6"
     - "7.0"
     - "7.1"
+    - "7.2"
 
 - name: Add PHP PPA
   apt_repository: repo="ppa:ondrej/php" update_cache=yes

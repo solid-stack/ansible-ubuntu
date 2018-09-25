@@ -2,15 +2,6 @@
 
 Requires Ansible 2.1 or greater.
 
-* 2.2.0 - XDebug for php-fpm 7.1
-* 2.1.4 - Updating Java install to work - Oracle JDK via webupd8team is now broken
-* 2.1.3 - Adding mongo driver to phpt
-* 2.1.2 - Patch for checking on /var/run in php
-* 2.1.1 - Do not install mongo as part of php, and some Elasticsearch tweaks
-* 2.1.0 - Certbot
-* 2.0.2 - Testing this and future versions on *Ubuntu 16*
-* 1.7.0 - Testing 1.x versions on *Ubuntu 14*
-
 ## What is this?
 
 A set of Ansible roles for Ubuntu you can `npm install` locally.
@@ -35,7 +26,7 @@ A set of Ansible roles for Ubuntu you can `npm install` locally.
 | `common/nginx` | Install NGINX |
 | `common/node` | Install Node via NVM |
 | `common/oh-my-zsh` | Install Oh My ZSH |
-| `common/php-fpm` | Install PHP-FPM 7.2, 7.1, 7.0, or 5.6 |
+| `common/php-fpm` | Install PHP-FPM 7.2, 7.1, 7.0, or 5.6 and uninstall all other versions |
 | `common/pip` | Install PIP |
 | `common/postfix` | Install and lightly configure Postfix |
 | `common/ruby` | Install Ruby |
@@ -164,10 +155,11 @@ You might have to add the php version to your group_vars ( `php.version` )
 
 * PHP Fpm
     * define the version you want - all others will be removed
+    * All other versions will be uninstalled
     
         ```
         php:
-            version: '7.1'
+            version: '7.2'
         ```
 * ruby (2.2)
 * Sharp - with needed libvips install
@@ -228,3 +220,15 @@ If tasks are timing out due to a slow connection, add:
 You will have to break apart tasks `with_items` to indvidual ones.
 
 Since this uses node via nvm, you have to source ~/.zshrc (to load nvm) before any node or npm related task.
+
+## Release notes
+
+* 2.3.0 - php-fpm 7.2 support
+* 2.2.0 - XDebug for php-fpm 7.1
+* 2.1.4 - Updating Java install to work - Oracle JDK via webupd8team is now broken
+* 2.1.3 - Adding mongo driver to phpt
+* 2.1.2 - Patch for checking on /var/run in php
+* 2.1.1 - Do not install mongo as part of php, and some Elasticsearch tweaks
+* 2.1.0 - Certbot
+* 2.0.2 - Testing this and future versions on *Ubuntu 16*
+* 1.7.0 - Testing 1.x versions on *Ubuntu 14*
