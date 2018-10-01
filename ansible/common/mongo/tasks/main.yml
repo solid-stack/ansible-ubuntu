@@ -16,10 +16,10 @@
 - name: Create mongo service
   template: src=mongod.service dest=/etc/systemd/system/mongod.service
 
-- name: ensure systemctl
-  apt:
-    name: systemd
-  become: yes
+#- name: ensure systemctl
+#  apt:
+#    name: systemd
+#  become: yes
 
 - name: Enable mongo service manually # nothing else seems to work
   shell: systemctl enable mongod
