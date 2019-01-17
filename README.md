@@ -159,7 +159,6 @@ You might have to add the php version to your group_vars ( `php.version` )
 
 * PHP Fpm
     * define the version you want - all others will be removed
-    * All other versions will be uninstalled
     
         ```
         php:
