@@ -25,6 +25,7 @@
           else [] }}'
   - php{{ php.version }}-mongodb
   - php{{ php.version }}-mysql
+  - php{{ php.version }}-soap
   - php{{ php.version }}-xmlrpc
   - php{{ php.version }}-xsl
   - php{{ php.version }}-zip
