@@ -27,6 +27,7 @@
   - php{{ php.version }}-mysql
   - php{{ php.version }}-xmlrpc
   - php{{ php.version }}-xsl
+  - php{{ php.version }}-zip
 
 - name: Install mongo driver for php5
   apt:
