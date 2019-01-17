@@ -17,10 +17,5 @@
         "provision": "./bin/provision"
     },
     "author": "Peter Ajtai <peter.ajtai@soliddigital.com>",
-    "license": "MIT",
-    "dependencies": {
-        "bluebird": "^2.9.13",
-        "commander": "^2.8.1",
-        "inquirer": "^0.8.5"
-    }
+    "license": "MIT"
 }
