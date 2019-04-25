@@ -168,12 +168,13 @@ You might have to add the php version to your group_vars ( `php.version` )
 * Sharp - with needed libvips install
 
 * Mongo
-    * Will skip mongo installation if mongo already installed
+    * Will skip mongo installation if mongo already installed, unless `mongo.force` is true.
     * Single Instance
     * Authorization enabled
 
         ```
         mongo:
+            force: false
             journaling: "false"
             auth: "enabled"
             root_admin_name: "root"

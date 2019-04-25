@@ -10,16 +10,11 @@
   ignore_errors: yes
 
 - name: Install mongo
-  when: mongo_installed | failed
+  when: mongo_installed or mongo.force == false | failed
   include: install-mongo.yml
 
 - name: Create mongo service
   template: src=mongod.service dest=/etc/systemd/system/mongod.service
-
-#- name: ensure systemctl
-#  apt:
-#    name: systemd
-#  become: yes
 
 - name: Enable mongo service manually # nothing else seems to work
   shell: systemctl enable mongod

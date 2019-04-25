@@ -1,5 +1,6 @@
 ---
 mongo:
+  force: false
   journaling: "false"
   auth: "enabled"
   root_admin_name: "root"
