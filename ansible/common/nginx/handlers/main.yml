@@ -1,6 +1,8 @@
 ---
 - name: Start Nginx
-  service: name=nginx state=started
+  service:
+    name: nginx
+    state: started
 
 # do not restart service, it will stop service even if there are errors in your nginx files, and then it will not start
 # use reload instead

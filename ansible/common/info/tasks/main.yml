@@ -1,5 +1,7 @@
 ---
-- debug: var={{ item }}
-  with_items:
-    - ansible_distribution
-    - ansible_distribution_release
+- debug:
+    var: ansible_distribution
+
+- debug:
+    var: ansible_distribution_release
+

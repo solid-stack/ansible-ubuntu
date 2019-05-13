@@ -6,15 +6,18 @@
   args:
     executable: /bin/zsh
 
-- name: Install gems for grasshopper
-  gem: name={{ item.name }} pre_release={{ item.pre }}
-  with_items:
-    - name: sass-globbing
-      pre: no
-    - name: sass-css-importer
-      pre: yes
-    - name: bundler
-      pre: no
+- name: Install sass-css-importer for grasshopper
+  gem:
+    pre-release: yes
+    name: sass-css-importer
+
+- name: Install sass-globbing for grasshopper
+  gem:
+    name: sass-globbing
+
+- name: Install bundler for grasshopper
+  gem:
+    name: bundler
 
 - name: Create log location
   file: path=/home/{{ ansible_ssh_user }}/logs state=directory

@@ -1,13 +1,18 @@
 ---
 
 - name: Add Brightbox ppa
-  apt_repository: repo='ppa:brightbox/ruby-ng'
+  apt_repository:
+    repo: 'ppa:brightbox/ruby-ng'
 
 - name: Install ruby deps
-  apt: pkg=software-properties-common update_cache=yes
+  apt:
+    pkg: software-properties-common
+    update_cache: yes
   async: 1800
 
 - name: Install ruby
-  apt: pkg=ruby2.2 update_cache=yes
+  apt:
+    pkg: ruby2.2
+    update_cache: yes
   async: 1800
 

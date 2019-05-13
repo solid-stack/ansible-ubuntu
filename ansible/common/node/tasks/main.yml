@@ -2,23 +2,26 @@
 
 - name: Install nvm
   become: no
-  git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version={{ nvm.version }} accept_hostkey=yes
+  git:
+    repo: https://github.com/creationix/nvm.git
+    dest: ~/.nvm version={{ nvm.version }}
+    accept_hostkey: yes
   tags: nvm
 
 - name: Source nvm in ~/.profile
   become: no
-  lineinfile: >
-    dest=~/.profile
-    line="source ~/.nvm/nvm.sh"
-    create=yes
+  lineinfile:
+    dest: ~/.profile
+    line: "source ~/.nvm/nvm.sh"
+    create: yes
   tags: nvm
 
 - name: Source nvm in ~/.zshrc
   become: no
-  lineinfile: >
-    dest=~/.zshrc
-    line="source ~/.nvm/nvm.sh"
-    create=yes
+  lineinfile:
+    dest: ~/.zshrc
+    line: "source ~/.nvm/nvm.sh"
+    create: yes
   tags: nvm
 
 - name: Install node

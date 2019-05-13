@@ -1,13 +1,18 @@
 ---
 
 - name: Turn off authorization
-  set_fact: mongo_auth_enabled="disabled"
+  set_fact:
+    mongo_auth_enabled: "disabled"
 
 - name: Set mongo configuration file
-  template: src=mongo.conf dest=/etc/mongod.conf
+  template:
+    src: mongo.conf
+    dest: /etc/mongod.conf
 
 - name: Restart mongodb service
-  service: name=mongod state=restarted
+  service:
+    name: mongod
+    state: restarted
 
 - name: create administrative user siteRootAdmin
   mongodb_user:

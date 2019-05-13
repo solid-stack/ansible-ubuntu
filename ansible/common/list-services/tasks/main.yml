@@ -5,7 +5,8 @@
   ignore_errors: yes
 
 - name: Display if nginx is running
-  debug: msg="{{ nginx_running.stdout }}"
+  debug:
+    msg: "{{ nginx_running.stdout }}"
 
 - name: Register if elasticsearch is running
   shell: sudo service elasticsearch status
@@ -13,7 +14,8 @@
   ignore_errors: yes
 
 - name: Display if elasticsearch is running
-  debug: msg="{{ elasticsearch_running.stdout }}"
+  debug:
+    msg: "{{ elasticsearch_running.stdout }}"
 
 - name: Register if phpfpm is running
   shell: sudo service php7.0-fpm status
@@ -21,7 +23,8 @@
   ignore_errors: yes
 
 - name: Display if phpfpm is running
-  debug: msg="{{ phpfpm_running.stdout }}"
+  debug:
+    msg: "{{ phpfpm_running.stdout }}"
 
 - name: Register if mongo is running
   shell: sudo service mongod status
@@ -29,7 +32,8 @@
   ignore_errors: yes
 
 - name: Display if mongo is running
-  debug: msg="{{ mongo_running.stdout }}"
+  debug:
+    msg: "{{ mongo_running.stdout }}"
 
 - name: Register if mysql is running
   shell: sudo service mysql status
@@ -37,4 +41,5 @@
   ignore_errors: yes
 
 - name: Display if mysql is running
-  debug: msg="{{ mysql_running.stdout }}"
+  debug:
+    msg: "{{ mysql_running.stdout }}"
