@@ -1,7 +1,11 @@
 ---
 
 - name: 3.4.x Import the public key used by the package management system.
-  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=0C49F3730359A14518585931BC711F9BA15703C6
+  apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: 0C49F3730359A14518585931BC711F9BA15703C6
 
 - name: 3.4.x Create a list file for MongoDB.
-  template: src=mongodb-org-3.4.list dest=/etc/apt/sources.list.d/mongodb-org-3.4.list
+  template:
+    src: mongodb-org-3.4.list
+    dest: /etc/apt/sources.list.d/mongodb-org-3.4.list

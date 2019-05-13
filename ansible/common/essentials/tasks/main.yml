@@ -1,19 +1,25 @@
 ---
 - name: Update Apt
-  apt: update_cache=yes
+  apt:
+    update_cache: yes
 
 - name: Checking essentials
-  apt: name="{{ item }}" state=present
-  with_items:
-  - build-essential
-  - curl
-  - htop
-  - mailutils
-  - wget
-  - vim
-  - libssl-dev
-  - unzip
-  - zip
+  apt:
+    state: present
+    name:
+    - build-essential
+    - curl
+    - htop
+    - mailutils
+    - wget
+    - vim
+    - libssl-dev
+    - unzip
+    - zip
+
+
 
 - name: Copy vimrc
-  copy: src=.vimrc dest=/home/{{ ansible_ssh_user }}/.vimrc
+  copy:
+    src: .vimrc
+    dest: /home/{{ ansible_ssh_user }}/.vimrc

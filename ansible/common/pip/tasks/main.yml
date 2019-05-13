@@ -1,7 +1,10 @@
 ---
 
 - name: Checking essentials
-  apt: name="{{ item }}" state=present update_cache=yes
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
   with_items:
   - python-pip
   - python-setuptools

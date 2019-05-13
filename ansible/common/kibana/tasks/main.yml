@@ -1,21 +1,27 @@
 ---
 
 - name: Check if download Kibana already (seems to download multiple times without this)
-  stat: path=/home/{{ ansible_ssh_user }}/kibana-4.0.1-linux-x64.tar.gz
+  stat:
+    path: /home/{{ ansible_ssh_user }}/kibana-4.0.1-linux-x64.tar.gz
   register: kibana_dl_stat
 
 - name: Download Kibana
-  get_url: url=https://download.elasticsearch.org/kibana/kibana/kibana-4.0.1-linux-x64.tar.gz dest=/home/{{ ansible_ssh_user }}/
+  get_url:
+    url: https://download.elasticsearch.org/kibana/kibana/kibana-4.0.1-linux-x64.tar.gz
+    dest: /home/{{ ansible_ssh_user }}/
   when: not kibana_dl_stat.stat.exists
 
 - name: Make Kibana directory
   file: path=/opt state=directory
 
 - name: Unarchive Kibana
-  unarchive: src=/home/{{ ansible_ssh_user}}/kibana-4.0.1-linux-x64.tar.gz dest=/opt copy=no
+  unarchive:
+    src: /home/{{ ansible_ssh_user}}/kibana-4.0.1-linux-x64.tar.gz
+    dest: /opt copy=no
 
 - name: stat kibana
-  stat: path=/opt/kibana
+  stat:
+    path: /opt/kibana
   register: kibana_stat
 
 - name: copy Kibana
@@ -23,27 +29,45 @@
   when: not kibana_stat.stat.exists
 
 - name: Download Kibana as a service
-  get_url: url=https://raw.githubusercontent.com/akabdog/scripts/146dc9f55e385e5a0a099fd1212eb3f31be8cad0/kibana4_init dest=/etc/init.d/kibana4
+  get_url:
+    url: https://raw.githubusercontent.com/akabdog/scripts/146dc9f55e385e5a0a099fd1212eb3f31be8cad0/kibana4_init
+    dest: /etc/init.d/kibana4
 
 - name: Make kibana4 service executable
-  file: path=/etc/init.d/kibana4 mode=u+x,g+x,o+x
+  file:
+    path: /etc/init.d/kibana4
+    mode: u+x,g+x,o+x
   notify: Start Kibana
 
 - name: Kibana on boot
   shell: update-rc.d kibana4 defaults 96 9
 
 - name: Bind kibana to localhost
-  lineinfile: dest=/opt/kibana/config/kibana.yml regexp='^host:' line='host{{':'}} "127.0.0.1"'
+  lineinfile:
+    dest: /opt/kibana/config/kibana.yml
+    regexp: '^host:'
+    line: 'host{{':'}} "127.0.0.1"'
   notify: Restart Kibana
 
 - name: Create Kibana access
-  htpasswd: path=/etc/nginx/htpasswd.users name={{ kibana.auth_user }} password={{ kibana.auth_password }} owner=root group=www-data mode=0640
+  htpasswd:
+    path: /etc/nginx/htpasswd.users
+    name: {{ kibana.auth_user }}
+    password: {{ kibana.auth_password }}
+    owner: root
+    group: www-data
+    mode: 0640
 
 - name: Setup nginx Kibana proxy
-  template: src=kibana.conf dest=/etc/nginx/sites-available/kibana.conf
+  template:
+    src: kibana.conf
+    dest: /etc/nginx/sites-available/kibana.conf
 
 - name: Link to sites enabled
-  file: src=/etc/nginx/sites-available/kibana.conf dest=/etc/nginx/sites-enabled/kibana.conf state=link
+  file:
+    src: /etc/nginx/sites-available/kibana.conf
+    dest: /etc/nginx/sites-enabled/kibana.conf
+    state: link
   notify:
     - Reload Nginx
 

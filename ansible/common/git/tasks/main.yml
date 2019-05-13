@@ -1,8 +1,13 @@
 ---
 
 - name: Add git apt repo
-  apt_repository: repo='ppa:git-core/ppa'
+  apt_repository:
+    repo: 'ppa:git-core/ppa'
   async: 1800
 
 - name: Install git
-  apt: name="git" state="present" update_cache=yes force=yes
+  apt:
+    name: "git"
+    state: "present"
+    update_cache: yes
+    force: yes

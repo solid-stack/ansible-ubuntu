@@ -1,12 +1,15 @@
 ---
 
 - name: Checking essentials
-  apt: name="{{ item }}" state=present
-  with_items:
-  - libmysqlclient-dev
+  apt:
+    name:
+      - libmysqlclient-dev
+    state: present
 
 - name: Install mysql
-  apt: pkg="mysql-server-{{ mysql.version }}"
+  apt:
+    pkg: "mysql-server-{{ mysql.version }}"
 
 - name: Install mysql for python
-  pip: name=MySQL-python
+  pip:
+    name: MySQL-python

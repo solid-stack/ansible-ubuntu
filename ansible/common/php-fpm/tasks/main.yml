@@ -1,34 +1,35 @@
 ---
 
 - name: Add PHP PPA
-  apt_repository: repo="ppa:ondrej/php" update_cache=yes
+  apt_repository:
+    repo: "ppa:ondrej/php"
+    update_cache: yes
 
 - name: Install PHP {{ php.version }}
   apt:
-    name: "{{ item }}"
+    name:
+      - php-pear
+      - php-mysql
+      - php{{ php.version }}-cli
+      - php{{ php.version }}-common
+      - php{{ php.version }}-curl
+      - php{{ php.version }}-dev
+      - php{{ php.version }}-fpm
+      - php{{ php.version }}-gd
+      - php{{ php.version }}-imagick
+      - php{{ php.version }}-imap
+      - php{{ php.version }}-mbstring
+      - '{{ "php" + php.version + "-mcrypt"
+              if (php.version is version_compare("7.2","<"))
+              else [] }}'
+      - php{{ php.version }}-mongodb
+      - php{{ php.version }}-mysql
+      - php{{ php.version }}-soap
+      - php{{ php.version }}-xmlrpc
+      - php{{ php.version }}-xsl
+      - php{{ php.version }}-zip
     state: present
     force: yes
-  with_items:
-  - php-pear
-  - php-mysql
-  - php{{ php.version }}-cli
-  - php{{ php.version }}-common
-  - php{{ php.version }}-curl
-  - php{{ php.version }}-dev
-  - php{{ php.version }}-fpm
-  - php{{ php.version }}-gd
-  - php{{ php.version }}-imagick
-  - php{{ php.version }}-imap
-  - php{{ php.version }}-mbstring
-  - '{{ "php" + php.version + "-mcrypt"
-          if (php.version is version_compare("7.2","<"))
-          else [] }}'
-  - php{{ php.version }}-mongodb
-  - php{{ php.version }}-mysql
-  - php{{ php.version }}-soap
-  - php{{ php.version }}-xmlrpc
-  - php{{ php.version }}-xsl
-  - php{{ php.version }}-zip
 
 - name: Install mongo driver for php5
   apt:
@@ -56,11 +57,10 @@
 - name: Install mcrypt dependencies
   when: php.version is version_compare("7.2",">=")
   apt:
-    name: "{{ item }}"
+    name:
+      - libmcrypt-dev
+      - libreadline-dev
     state: present
-  with_items:
-  - libmcrypt-dev
-  - libreadline-dev
 
 - name: Install mcrypt via Pecl
   when: php.version is version_compare("7.2",">=")

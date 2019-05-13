@@ -25,4 +25,6 @@
     line: "network.host{{ ':' }} {{ elasticsearch.bind }}"
 
 - name: Start Elasticsearch
-  service: name=elasticsearch state=started
+  service:
+    name: elasticsearch
+    state: started
