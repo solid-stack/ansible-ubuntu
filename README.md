@@ -227,6 +227,10 @@ Since this uses node via nvm, you have to source ~/.zshrc (to load nvm) before a
 
 ## Release notes
 
+* 2.7.0 - loops moved to array & other formatting 
+* 2.6.0 - can override skipping mongo reinstall
+* 2.5.0 - php soap added
+* 2.4.0 - php zip added
 * 2.3.0 - php-fpm 7.2 support
 * 2.2.0 - XDebug for php-fpm 7.1
 * 2.1.4 - Updating Java install to work - Oracle JDK via webupd8team is now broken
