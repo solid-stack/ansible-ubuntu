@@ -2,12 +2,11 @@
 
 - name: Checking essentials
   apt:
-    name: "{{ item }}"
+    name:
+      - python-pip
+      - python-setuptools
+      - python-dev
     state: present
     update_cache: yes
-  with_items:
-  - python-pip
-  - python-setuptools
-  - python-dev
 
 - command: pip install -U pip

@@ -1,0 +1,24 @@
+- name: Install mcrypt prior to 7.2
+  when: php.version is version_compare("7.2","<")
+  apt:
+    name:
+      - php{{ php.version }}-mcrypt
+    state: present
+
+- name: Install mcrypt dependencies
+  when: php.version is version_compare("7.2",">=")
+  apt:
+    name:
+      - libmcrypt-dev
+      - libreadline-dev
+    state: present
+
+- name: Install mcrypt via Pecl
+  when: php.version is version_compare("7.2",">=")
+  shell: echo "\n\n\n\n\n\n" | pecl install mcrypt-1.0.1 || echo 'mcrypt already installed?'
+
+- name: Add mcrypt so to the ini
+  when: php.version is version_compare("7.2",">=")
+  lineinfile:
+    path: /etc/php/{{ php.version }}/fpm/php.ini
+    line: 'extension=mcrypt.so'
