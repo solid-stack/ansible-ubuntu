@@ -227,6 +227,7 @@ Since this uses node via nvm, you have to source ~/.zshrc (to load nvm) before a
 
 ## Release notes
 
+* 2.8.0 - mcrypt pulled out into its own file
 * 2.7.0 - loops moved to array & other formatting 
 * 2.6.0 - can override skipping mongo reinstall
 * 2.5.0 - php soap added
