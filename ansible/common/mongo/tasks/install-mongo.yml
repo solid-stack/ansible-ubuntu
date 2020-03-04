@@ -12,15 +12,15 @@
   become: yes
 
 - name: Install mongo 3.0.x
-  when: mongo.version | match("^3.0")
+  when: mongo.version is match("^3.0")
   include: install-3-0-x.yml
 
 - name: Install mongo 3.2.x
-  when: mongo.version | match("^3.2")
+  when: mongo.version is match("^3.2")
   include: install-3-2-x.yml
 
 - name: Install mongo 3.4.x
-  when: mongo.version | match("^3.4")
+  when: mongo.version is match("^3.4")
   include: install-3-4-x.yml
 
 - name: Apt get update

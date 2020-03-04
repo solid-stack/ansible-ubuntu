@@ -2,8 +2,8 @@
 
 - name: Install es 2.1.0
   include: install-es-2.yml
-  when: elasticsearch.version | match("^2.")
+  when: elasticsearch.version is match("^2.")
 
 - name: Install es 5.x
   include: install-es-5.yml
-  when: elasticsearch.version | match("^5.")
+  when: elasticsearch.version is match("^5.")
