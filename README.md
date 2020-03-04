@@ -1,6 +1,6 @@
 # ansible-ubuntu (vagrant)
 
-Requires Ansible 2.1 or greater.
+Requires Ansible 2.9.5 or greater.
 
 ## What is this?
 
