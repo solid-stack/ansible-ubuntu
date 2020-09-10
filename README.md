@@ -146,8 +146,8 @@ You might have to add the php version to your group_vars ( `php.version` )
 
     ```
     nvm:
-        version: v0.31.0
-        node_version: v5.0.0
+        version: v0.35.3
+        node_version: v12.18.3
     ```
 
 * Oh My ZSH
