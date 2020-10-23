@@ -9,7 +9,3 @@
 - name: Install mysql
   apt:
     pkg: "mysql-server-{{ mysql.version }}"
-
-- name: Install mysql for python
-  pip:
-    name: MySQL-python
