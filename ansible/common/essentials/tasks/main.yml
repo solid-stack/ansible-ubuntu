@@ -16,6 +16,7 @@
     - libssl-dev
     - unzip
     - zip
+    - cowsay
 
 
 
